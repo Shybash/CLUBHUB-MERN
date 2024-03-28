@@ -1,0 +1,62 @@
+/* Home.css */
+
+/* Styles for the entire home component */
+.home {
+  margin-top:5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.first{
+  display: flex;
+}
+
+.carousel-inner{
+  width: 720px;
+  height: 360px;
+}
+
+.carousel-inner img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+.buttons{
+  margin-left:50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.register{
+  margin-right:10px;
+}
+.login{
+  margin-left:10px;
+}
+.white-box {
+  background-color: rgb(192, 192, 14);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.club {
+  color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clubhub-info p {
+  margin-bottom: 20px;
+}
+
+
+.spinner-border {
+  margin-right: 5px;
+}
+

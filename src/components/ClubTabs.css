@@ -1,0 +1,35 @@
+/* ClubTabs.css */
+
+/* Style for the container of the tabs */
+.c-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+  }
+  
+  /* Style for each tab */
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  /* Style for the active tab */
+  .tab.active {
+    background-color: violet;
+    border-color: black;
+  }
+  
+  /* Style for hover effect on tabs */
+
+  
+  /* Style for the content area */
+  .tab-content {
+    margin-top: 20px;
+  }
+  
+  /* Additional styles as needed */
+  

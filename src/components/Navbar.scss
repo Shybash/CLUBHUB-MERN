@@ -1,0 +1,26 @@
+/* Navbar.scss */
+.navbar {
+  background-color:#008b86; /* Change the background color */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure navbar appears above other content */
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.5rem;
+  color: black; /* Change the text color */
+  font-weight: 500; /* Adjust the font weight */
+  margin-right: 4rem;
+}
+
+.navbar-brand{
+  margin-right:2rem;
+}
+
+.navbar-toggler-icon {
+  background-color:black; /* Change the color of the toggler icon */
+}
+
+/* Additional styling as needed */

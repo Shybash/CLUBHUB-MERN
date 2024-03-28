@@ -1,0 +1,77 @@
+/* Footer.css */
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-media,
+.useful-links,
+.contact-info {
+  flex: 1;
+}
+
+.social-media h3,
+.useful-links h3,
+.contact-info h3 {
+  font-size: 20px;
+}
+
+.social-media ul,
+.useful-links ul,
+.contact-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.social-media li,
+.useful-links li,
+.contact-info li {
+  margin-bottom: 10px;
+}
+
+.social-media a,
+.useful-links a,
+.contact-info a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.social-media a:hover,
+.useful-links a:hover,
+.contact-info a:hover {
+  color: #ff6347; /* Change color on hover */
+}
+
+.useful-links a,
+.contact-info a {
+  margin-left: 10px;
+}
+
+.footer-info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-info p {
+  margin: 0;
+}
+
+
+  .clubhub {
+    margin-top: 0; /* Remove any default margin */
+    font-size: 4rem; /* Increase font size */
+    font-weight: bold; /* Add bold font weight */
+    color: #FF4500; /* Set text color to orange */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Add text shadow */
+    letter-spacing: 2px; /* Add letter spacing */
+    text-transform: uppercase; /* Transform text to uppercase */
+  }

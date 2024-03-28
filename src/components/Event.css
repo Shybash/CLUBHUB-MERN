@@ -1,0 +1,42 @@
+.college-events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust column width as needed */
+  gap: 20px; /* Adjust the gap between events */
+  margin-top: 5rem;
+}
+
+.event {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.event h2 {
+  margin-top: 0;
+}
+
+.event-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-image {
+  margin-bottom: 20px;
+}
+
+.event-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.event-description {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+  .college-events {
+    grid-template-columns: 1fr; /* Adjust for smaller screens */
+  }
+}
