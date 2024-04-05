@@ -22,7 +22,7 @@ const RegisterStudent = () => {
     setLoading(true); // Set loading to true when submitting form
     setError(null); // Reset error state
 
-    axios.post('https://clubhub-two.vercel.app/api/register', data)
+    axios.post(`https://clubhub-backend.vercel.app/api/register`, data)
       .then(res => {
         alert(res.data);
         setLoading(false); // Set loading to false after successful request

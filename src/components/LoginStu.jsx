@@ -31,7 +31,7 @@ const LoginStudent = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.post(
-                'http://localhost:4000/api/login',
+                `https://clubhub-backend.vercel.app/api/login`,
                 {
                     email: data.email,
                     password: data.password,

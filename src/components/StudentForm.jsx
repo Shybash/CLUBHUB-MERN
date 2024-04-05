@@ -15,7 +15,7 @@ const StudentForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://clubhub-beige.vercel.app/api/studentForm', {
+      const response = await axios.post(`https://clubhub-backend.vercel.app/api/studentForm`, {
         rollNum,
         name,
         club

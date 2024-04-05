@@ -16,10 +16,10 @@ const Home = () => {
   return (
     <div className="home">
       <div className="first">
-        <div id="carouselExampleRide" className="carousel" data-bs-ride="true">
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000 ">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src="./images/group.png" className="d-block w-100" alt="Event 1" />
+              <img src="./images/group.png" className="d-block w-100" alt="Event 1"   />
             </div>
             <div className="carousel-item">
               <img src="./images/dance1.png" className="d-block w-100" alt="Event 2" />

@@ -24,7 +24,17 @@
   height:100%;
   object-fit: cover;
 }
+.carousel{
+  float: inline-start;
+}
+img{
+  height: 100%;
+  aspect-ratio: 3/2;
+  /* object-fit: contain; */
+  /* mix-blend-mode: color-burn; */
 
+  width: 200px;
+}
 .buttons{
   margin-left:50px;
   display: flex;

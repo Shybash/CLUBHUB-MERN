@@ -10,7 +10,7 @@ const StudentList = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get('https://clubhub-beige.vercel.app/api/StudentForm');
+        const response = await axios.get('https://clubhub-backend.vercel.app/api/StudentForm');
         setGroupedStudents(response.data);
         setLoading(false);
       } catch (error) {
@@ -25,7 +25,7 @@ const StudentList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://clubhub-beige.vercel.app/api/deleteStudent/${id}`);
+      await axios.delete(`https://clubhub-backend.vercel.app/api/deleteStudent/${id}`);
       // Filter out the deleted student from the list
       setGroupedStudents(prevStudents => {
         const updatedStudents = { ...prevStudents };

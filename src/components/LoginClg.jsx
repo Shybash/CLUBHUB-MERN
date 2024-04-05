@@ -31,7 +31,7 @@ const Loginclg = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.post(
-                'https://clubhub-beige.vercel.app/api/LoginClg',
+                `https://clubhub-backend.vercel.app/api/LoginClg`,
                 {
                     email: data.email,
                     password: data.password,
