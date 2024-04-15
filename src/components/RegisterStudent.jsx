@@ -3,74 +3,72 @@ import axios from 'axios';
 import './Register.css';
 
 const RegisterStudent = () => {
-  const [data, setData] = useState({
+  const [formData, setFormData] = useState({
     username: '',
+    rollnum: '',
     email: '',
     password: '',
     confirmpassword: ''
   });
 
-  const [loading, setLoading] = useState(false); // Define loading state variable
-  const [error, setError] = useState(null); // Define error state variable
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const changeHandler = e => {
-    setData({ ...data, [e.target.name]: e.target.value });
+  const handleChange = e => {
+    setFormData(prevState => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }));
   };
 
-  const submitHandler = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    setLoading(true); // Set loading to true when submitting form
-    setError(null); // Reset error state
+    setError('');
+    setLoading(true);
 
-    axios.post(`https://clubhub-backend.vercel.app/api/register`, data)
-      .then(res => {
-        alert(res.data);
-        setLoading(false); // Set loading to false after successful request
-      })
-      .catch(error => {
-        console.error(error);
-        setLoading(false); // Set loading to false after error
+    if (formData.password !== formData.confirmpassword) {
+      setError('Passwords do not match');
+      setLoading(false);
+      return;
+    }
 
-        if (error.response && error.response.data && error.response.data.error) {
-          // Display the error message sent by the server
-          setError(error.response.data.error);
-        } else {
-          // Display a generic error message for other types of errors
-          setError("An error occurred. Please try again later.");
-        }
-      });
+    try {
+      const response = await axios.post('https://clubhub-backend.vercel.app/api/register', formData);
+      alert(response.data);
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.error) {
+        setError(error.response.data.error);
+      } else {
+        setError('An error occurred. Please try again later.');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="reg-container">
-      <form onSubmit={submitHandler}>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <h3>Register</h3>
-          {error && <p className="text-danger">{error}</p>} {/* Display error message if present */}
+          {error && <p className="text-danger">{error}</p>}
           <label className="form-label">Username</label>
-          <input type="text" placeholder="username" name="username" onChange={changeHandler} className="form-control" />
+          <input type="text" placeholder="Username" name="username" value={formData.username} onChange={handleChange} className="form-control" />
           <label className="form-label">Roll Number</label>
-          <input type="text" placeholder="roll number" name="rollNumber" onChange={changeHandler} className="form-control" />
+          <input type="text" placeholder="Roll Number" name="rollnum" value={formData.rollnum} onChange={handleChange} className="form-control" />
           <label className="form-label">Email</label>
-          <input type="email" placeholder="email" name="email" onChange={changeHandler} className="form-control" />
+          <input type="email" placeholder="Email" name="email" value={formData.email} onChange={handleChange} className="form-control" />
           <label className="form-label">Password</label>
-          <input type="password" placeholder="password" name="password" onChange={changeHandler} className="form-control" />
+          <input type="password" placeholder="Password" name="password" value={formData.password} onChange={handleChange} className="form-control" />
           <label className="form-label">Confirm Password</label>
-          <input type="password" placeholder="confirm password" name="confirmpassword" onChange={changeHandler} className="form-control" />
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={loading}
-          >
+          <input type="password" placeholder="Confirm Password" name="confirmpassword" value={formData.confirmpassword} onChange={handleChange} className="form-control" />
+          <button type="submit" className="btn btn-primary" disabled={loading}>
             {loading ? (
-              <div className="d-flex align-items-center">
-                <div className="spinner-border" role="status">
-                  <span className="sr-only">Loading...</span>
-                </div>
-                <span className="ml-2">Loading...</span>
+              <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
               </div>
             ) : (
-              "Register"
+              'Register'
             )}
           </button>
         </div>
