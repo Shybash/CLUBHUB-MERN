@@ -18,6 +18,7 @@ const currentYear = new Date().getFullYear();
 
 const Footer = () => {
   return (
+    <div className="foot">
     <footer className="footer">
       <h1 className="clubhub">CLUB HUB</h1>
       <div className="footer-content">
@@ -65,6 +66,7 @@ const Footer = () => {
       </div>
 
     </footer>
+    </div>
   );
 };
 

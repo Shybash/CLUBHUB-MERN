@@ -49,6 +49,8 @@ const RegisterStudent = () => {
           {error && <p className="text-danger">{error}</p>} {/* Display error message if present */}
           <label className="form-label">Username</label>
           <input type="text" placeholder="username" name="username" onChange={changeHandler} className="form-control" />
+          <label className="form-label">Roll Number</label>
+          <input type="text" placeholder="roll number" name="rollNumber" onChange={changeHandler} className="form-control" />
           <label className="form-label">Email</label>
           <input type="email" placeholder="email" name="email" onChange={changeHandler} className="form-control" />
           <label className="form-label">Password</label>

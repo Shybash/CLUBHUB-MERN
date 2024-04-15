@@ -67,6 +67,11 @@ function NavbarStu() {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/Profile">
+                  Profile
+                </Link>
+              </li>
+              <li className="nav-item">
                 <button
                   type="button"
                   className="btn btn-danger btn-lg"

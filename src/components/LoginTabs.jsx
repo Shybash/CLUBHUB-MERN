@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import Loginclg from './LoginClg';
 import LoginStudent from './LoginStu';
 import './LoginTabs.css';
@@ -38,6 +39,9 @@ const LoginTabs = () => {
                 {activeTab === 'college' && (
                     <Loginclg />
                 )}
+                   <div className="dont-have-account">
+                    <p>Don't have an account? <Link to="/Register">Register</Link></p>
+                </div>
             </div>
         </div>
     );

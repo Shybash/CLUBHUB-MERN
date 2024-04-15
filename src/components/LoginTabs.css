@@ -29,3 +29,18 @@
 .Login-nav-item:hover {
   background-color: green; /* Darker hover color */
 }
+
+.dont-have-account {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-link {
+  color: #007bff; /* Change color to your preference */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}

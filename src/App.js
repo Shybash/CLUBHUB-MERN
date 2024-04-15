@@ -1,5 +1,5 @@
 // App.js
-// import React, { useState, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home'; 
@@ -18,6 +18,7 @@ import StudentList from './components/StudentList';
 import Footer from './components/Footer';
 import Clubs from './components/ClubTabs';
 import Faq from './components/Faq';
+import Profile from './components/Profile';
 // export const StoreContext = createContext();
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/StudentForm" element={<><NavbarStu /><StudentForm /></>} />
           <Route path="/Events" element={<><NavbarStu /> <Event /></>} />
           <Route path="/Clubs" element={<><NavbarStu /> <Clubs /> </>} />
+          <Route path="/profile" element={<><NavbarStu /> <Profile /> </>} />
           </>
         ) : (
           <Route path="*" element={<> <Navbar /><LoginTabs /></>} />

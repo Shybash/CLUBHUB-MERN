@@ -1,36 +1,44 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const Authcontext = createContext();
+const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [authenticated, setAuthenticated] = useState(false);
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
-        if (storedToken) {
+        const storedUserId = localStorage.getItem('userId');
+        if (storedToken && storedUserId) {
             setToken(storedToken);
+            setUserId(storedUserId);
             setAuthenticated(true);
         }
     }, []); // Only run once on component mount
 
-    const login = (newToken) => {
+    const login = (newToken, newUserId) => {
         setToken(newToken);
+        setUserId(newUserId);
         localStorage.setItem('token', newToken);
+        localStorage.setItem('userId', newUserId);
         setAuthenticated(true);
     };
 
     const logout = () => {
         setToken(null);
+        setUserId(null);
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
         setAuthenticated(false);
     };
 
     return (
-        <Authcontext.Provider value={{ token, authenticated, login, logout }}>
+        <AuthContext.Provider value={{ token, authenticated, userId, login, logout }}>
             {children}
-        </Authcontext.Provider>
+           
+        </AuthContext.Provider>
     );
 };
 
-export const useAuth = () => useContext(Authcontext);
+export const useAuth = () => useContext(AuthContext);

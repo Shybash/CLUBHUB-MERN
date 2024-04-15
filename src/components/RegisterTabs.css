@@ -1,7 +1,8 @@
 .reg-body {
+  
   background: linear-gradient(to top right, #33ccff, #66aaff, #9966ff, #cc33ff, #ff00ff, #ff33cc, #ff6699, #ff9966, #ffcc33, #ffff00);
   font-family: sans-serif;
-  margin-top:20px;
+  margin-top:5rem;
   padding: 0;
   display: flex;
   justify-content: center;
