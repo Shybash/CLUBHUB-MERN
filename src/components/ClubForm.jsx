@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import './ClubForm.css';
-const ClubForm = () => {
+
+const CreateClubForm = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
@@ -13,12 +13,21 @@ const ClubForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`https://clubhub-backend.vercel.app/api/CreateClub`, { name, description, category, createdBy });
-            setMessage('Club created successfully!');
-            setName('');
-            setDescription('');
-            setCategory('');
-            setCreatedBy('');
+            const response = await axios.post('https://clubhub-backend.vercel.app/api/createClub', {
+                name,
+                description,
+                category,
+                createdBy
+            });
+            if (response.status === 201) {
+                setMessage('Club created successfully!');
+                setName('');
+                setDescription('');
+                setCategory('');
+                setCreatedBy('');
+            } else {
+                setMessage('Failed to create club.');
+            }
         } catch (error) {
             console.error('Error creating club:', error);
             setMessage('Failed to create club.');
@@ -52,4 +61,4 @@ const ClubForm = () => {
     );
 }
 
-export default ClubForm;
+export default CreateClubForm;
