@@ -13,7 +13,7 @@ const ClubForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://clubhub-backend.vercel.app/api/createClub', { name, description, category, createdBy });
+            await axios.post(`https://clubhub-backend.vercel.app/api/CreateClub`, { name, description, category, createdBy });
             setMessage('Club created successfully!');
             setName('');
             setDescription('');
