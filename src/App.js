@@ -19,6 +19,7 @@ import Footer from './components/Footer';
 import Clubs from './components/ClubTabs';
 import Faq from './components/Faq';
 import Profile from './components/Profile';
+import ClubForm from './components/ClubForm';
 // export const StoreContext = createContext();
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <>
           <Route path="/College" element={<><NavbarClg /> <HomeClg /></>} />
           <Route path="/StudentList" element={<><NavbarClg /> <StudentList /></>} />
+          <Route path="/clubform" element={<> <NavbarClg /> <ClubForm /></>} />
           </>
         ):(
           <Route path="*" element={<> <Navbar /><LoginTabs /></>} />

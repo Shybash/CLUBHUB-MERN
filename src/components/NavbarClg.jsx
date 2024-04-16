@@ -65,6 +65,11 @@ function NavbarClg() {
               </Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link" to="/clubform">
+               ClubForm
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/">
               <button
                 type="button"
