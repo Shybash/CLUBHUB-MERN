@@ -63,7 +63,7 @@ function NavbarStu() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/suggestion">
-                  Contact Us
+                  Suggestion
                 </Link>
               </li>
               <li className="nav-item">

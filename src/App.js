@@ -43,7 +43,7 @@ function App() {
           <Route path="/StudentForm" element={<><NavbarStu /><StudentForm /></>} />
           <Route path="/Events" element={<><NavbarStu /> <Event /></>} />
           <Route path="/Clubs" element={<><NavbarStu /> <Clubs /> </>} />
-          <Route path="/suggestino" element={<><NavbarStu /> <Suggestion /></>} />
+          <Route path="/suggestion" element={<><NavbarStu /> <Suggestion /></>} />
           <Route path="/Profile" element={<><NavbarStu /> <Profile /> </>} />
           </>
         ) : (
