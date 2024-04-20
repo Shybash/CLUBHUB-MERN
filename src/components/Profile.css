@@ -1,0 +1,35 @@
+/* Profile.css */
+
+.profile-container {
+    margin-top: 5rem;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .profile-header {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .profile-header h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-details {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+  }
+  
+  .profile-details p {
+    margin-bottom: 10px;
+  }
+  
+  .profile-error {
+    color: red;
+    margin-top: 10px;
+  }
+  
