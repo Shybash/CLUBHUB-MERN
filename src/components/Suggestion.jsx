@@ -9,7 +9,7 @@ const Suggestion = () => {
     e.preventDefault();
 
     try {
-      await axios.post('https://clubhub-backend.vercel.app/api/suggestions', { query, suggestion });
+      await axios.post('https://clubhub-backend.vercel.app/api/', { query, suggestion });
       alert('Suggestion submitted successfully!');
       // Clear form fields after successful submission
       setQuery('');
