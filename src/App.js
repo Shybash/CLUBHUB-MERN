@@ -20,7 +20,7 @@ import Faq from './components/Faq';
 import Profile from './components/Profile';
 import ClubForm from './components/ClubForm';
 import ClubMembers from './components/ClubMembers';
-import Suggestion from './components/suggestion';
+import Suggestion from './components/Contact';
 // export const StoreContext = createContext();
 
 function App() {

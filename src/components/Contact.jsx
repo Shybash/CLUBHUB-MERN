@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Suggestion = () => {
+const Contact= () => {
   const [query, setQuery] = useState('');
   const [suggestion, setSuggestion] = useState('');
 
@@ -9,7 +9,7 @@ const Suggestion = () => {
     e.preventDefault();
 
     try {
-      await axios.post('https://clubhub-backend.vercel.app/api/', { query, suggestion });
+      await axios.post('https://clubhub-backend.vercel.app/api/StudentQuery', { query, suggestion });
       alert('Suggestion submitted successfully!');
       // Clear form fields after successful submission
       setQuery('');
@@ -38,4 +38,4 @@ const Suggestion = () => {
   );
 };
 
-export default Suggestion;
+export default Contact;
