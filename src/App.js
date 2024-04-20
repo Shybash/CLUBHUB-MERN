@@ -6,7 +6,6 @@ import Home from './components/Home';
 import LoginTabs from './components/LoginTabs';
 import RegisterTabs from './components/RegisterTabs';
 import About from './components/About';
-import ContactUs from './components/ContactUs';
 import {useAuth} from './components/Authcontext';
 import NavbarStu from './components/NavbarStu';
 import HomeStu from './components/HomeStu';
@@ -21,6 +20,7 @@ import Faq from './components/Faq';
 import Profile from './components/Profile';
 import ClubForm from './components/ClubForm';
 import ClubMembers from './components/ClubMembers';
+import Suggestion from './components/suggestion';
 // export const StoreContext = createContext();
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
           <Route path="/StudentForm" element={<><NavbarStu /><StudentForm /></>} />
           <Route path="/Events" element={<><NavbarStu /> <Event /></>} />
           <Route path="/Clubs" element={<><NavbarStu /> <Clubs /> </>} />
-          <Route path="/contact" element={<><NavbarStu /> <ContactUs /></>} />
+          <Route path="/suggestino" element={<><NavbarStu /> <Suggestion /></>} />
           <Route path="/Profile" element={<><NavbarStu /> <Profile /> </>} />
           </>
         ) : (
