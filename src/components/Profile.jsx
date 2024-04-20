@@ -1,53 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth } from './Authcontext';
+import './Profile.css';
 
 const Profile = () => {
-    const { token, userId } = useAuth();
-    const [userDetails, setUserDetails] = useState(null);
+    const [studentDetails, setStudentDetails] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchUserDetails = async () => {
+        const fetchStudentDetails = async () => {
             try {
+                const userId = localStorage.getItem("Id");
+                if (!userId) {
+                    throw new Error("User ID not found");
+                }
                 const response = await axios.get(
-                    `https://clubhub-backend.vercel.app/api/user/${userId}`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
+                    `https://clubhub-backend.vercel.app/api/student/${userId}`
                 );
-                setUserDetails(response.data);
+                setStudentDetails(response.data);
             } catch (error) {
-                setError("Error fetching user details");
+                console.error('Error fetching student:', error);
+                setError(error.message);
             } finally {
                 setLoading(false);
             }
         };
 
-        if (token && userId) {
-            fetchUserDetails();
-        }
-    }, [token, userId]);
+        fetchStudentDetails();
+    }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <div className="error">Error: {error}</div>;
     }
 
     return (
         <div className="profile-container">
-            {userDetails && (
-                <div >
-                    <h2>User Profile</h2>
-                    <p>Name: {userDetails.name}</p>
-                    <p>Email: {userDetails.email}</p>
-                    {/* Add more user details as needed */}
+            {studentDetails && (
+                <div>
+                    <h2>Student Profile</h2>
+                    <p>Name: {studentDetails.username}</p>
+                    <p>Roll Number: {studentDetails.rollnum}</p>
+                    <p>Email: {studentDetails.email}</p>
+                    <p>Image Name: {studentDetails.imageName}</p>
+                    <p>Created: {new Date(studentDetails.created).toLocaleString()}</p>
+                    {/* Add more student details as needed */}
                 </div>
             )}
         </div>

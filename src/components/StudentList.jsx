@@ -40,6 +40,29 @@ const StudentList = () => {
     }
   };
 
+  const handleAccept = async (id) => {
+    try {
+        const response = await axios.post(`https://clubhub-backend.vercel.app/api/AcceptStudent/${id}`);
+        // Assuming the response contains the accepted student data
+        const acceptedStudent = response.data;
+        // Update the state to include the accepted student
+        setGroupedStudents(prevStudents => {
+            const updatedStudents = { ...prevStudents };
+            // Assuming the accepted student belongs to a specific club
+            const club = acceptedStudent.club;
+            // Ensure updatedStudents[club] is initialized as an array
+            updatedStudents[club] = updatedStudents[club] || [];
+            // Add the accepted student to the corresponding club in the state
+            updatedStudents[club] = [...updatedStudents[club], acceptedStudent];
+            return updatedStudents;
+        });
+    } catch (error) {
+        console.error('Error accepting student:', error);
+        setError('Failed to accept student. Please try again later.');
+    }
+};
+
+
   return (
     <div>
       {loading ? (
@@ -53,37 +76,39 @@ const StudentList = () => {
             <div key={index}>
               <h3 className="club-name">{club} Club</h3>
               <div className="tables">
-              <table>
-                <thead className="c-head">
-                  <tr>
-                    <th >Roll Number</th>
-                    <th>Name</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {groupedStudents[club].map(student => (
-                    <tr key={student._id}>
-                      <td>{student.rollNum}</td>
-                      <td>{student.name}</td>
-                      <td>
-                        <button onClick={() => handleDelete(student._id)}>Delete</button>
-                      </td>
+                <table>
+                  <thead className="c-head">
+                    <tr>
+                      <th>Roll Number</th>
+                      <th>Name</th>
+                      <th>Contact Number</th>
+                      <th>Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {groupedStudents[club].map(student => (
+                      <tr key={student._id}>
+                        <td>{student.rollNum}</td>
+                        <td>{student.name}</td>
+                        <td>{student.contactNumber}</td>
+                        <td>
+                          <button onClick={() => handleDelete(student._id)}>Delete</button>
+                          <button onClick={() => handleAccept(student._id)}>Accept</button> {/* Accept button */}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           ))}
         </div>
       )}
       <div className="description-box">
-      <p className="description">
-  Welcome to the Student List page! Here, you can view a list of students grouped by their respective clubs. Each club has its own table displaying the roll number and name of the students belonging to that club. You can easily delete a student by clicking the "Delete" button next to their name. If you encounter any issues while viewing or deleting students, an error message will be displayed to inform you. This page provides a convenient way to manage student data, facilitating organization and administration within the educational institution or club. Feel free to explore and manage the student list as needed!
-</p>
-</div>
-
+        <p className="description">
+          Welcome to the Student List page! Here, you can view a list of students grouped by their respective clubs. Each club has its own table displaying the roll number, name, and contact number of the students belonging to that club. You can easily delete a student by clicking the "Delete" button next to their name. If you encounter any issues while viewing or deleting students, an error message will be displayed to inform you. This page provides a convenient way to manage student data, facilitating organization and administration within the educational institution or club. Feel free to explore and manage the student list as needed!
+        </p>
+      </div>
     </div>
   );
 };

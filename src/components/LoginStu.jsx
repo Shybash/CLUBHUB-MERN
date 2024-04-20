@@ -47,7 +47,7 @@ const LoginStudent = () => {
 
             await login(newToken);
             localStorage.setItem("token", newToken);
-            // localStorage.setItem("Id", response.data.user._id); 
+            localStorage.setItem("Id", response.data.user._id); 
             navigate("/Student"); // Navigate to "/Student" route
         } catch (error) {
             if (error.response && error.response.status === 401) {

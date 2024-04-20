@@ -20,6 +20,7 @@ import Clubs from './components/ClubTabs';
 import Faq from './components/Faq';
 import Profile from './components/Profile';
 import ClubForm from './components/ClubForm';
+import ClubMembers from './components/ClubMembers';
 // export const StoreContext = createContext();
 
 function App() {
@@ -34,7 +35,6 @@ function App() {
             <Route path="/Login" element={<> <Navbar /><LoginTabs /></>} /> {/* Changed path to "/login" */}
             <Route path="/Register" element={<><Navbar /> <RegisterTabs /></>} />
             <Route path="/About"    element={<> <Navbar /> <About /></>} />
-            <Route path="/contact" element={<><Navbar /> <ContactUs /></>} />
             <Route path="/faq" element={<><Navbar /> <Faq /></>} />
 
             {authenticated ? (
@@ -43,7 +43,8 @@ function App() {
           <Route path="/StudentForm" element={<><NavbarStu /><StudentForm /></>} />
           <Route path="/Events" element={<><NavbarStu /> <Event /></>} />
           <Route path="/Clubs" element={<><NavbarStu /> <Clubs /> </>} />
-          <Route path="/profile" element={<><NavbarStu /> <Profile /> </>} />
+          <Route path="/contact" element={<><NavbarStu /> <ContactUs /></>} />
+          <Route path="/Profile" element={<><NavbarStu /> <Profile /> </>} />
           </>
         ) : (
           <Route path="*" element={<> <Navbar /><LoginTabs /></>} />
@@ -54,6 +55,7 @@ function App() {
           <Route path="/College" element={<><NavbarClg /> <HomeClg /></>} />
           <Route path="/StudentList" element={<><NavbarClg /> <StudentList /></>} />
           <Route path="/clubform" element={<> <NavbarClg /> <ClubForm /></>} />
+          <Route path="/ClubMembers" element={<><NavbarClg /> <ClubMembers /> </>} />
           </>
         ):(
           <Route path="*" element={<> <Navbar /><LoginTabs /></>} />

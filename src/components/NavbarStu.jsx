@@ -45,7 +45,7 @@ function NavbarStu() {
           </button>
 
           <div className="collapse navbar-collapse" id="navbar-pages">
-            <ul className="navbar-nav l-auto">
+            <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <Link className="nav-link active" to="/Student">
                   Home
@@ -62,8 +62,8 @@ function NavbarStu() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Events">
-                  Events
+                <Link className="nav-link" to="/contact">
+                  Contact Us
                 </Link>
               </li>
               <li className="nav-item">

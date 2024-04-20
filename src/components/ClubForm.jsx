@@ -1,30 +1,30 @@
-// src/components/CreateClubForm.js
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './ClubForm.css';
 
 const CreateClubForm = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
-    const [createdBy, setCreatedBy] = useState('');
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false); // Track loading state
+
+ 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true); // Start loading
         try {
-            const response = await axios.post('https://clubhub-backend.vercel.app/api/createClub', {
+            const response = await axios.post('https://clubhub-backend.vercel.app/api/CreateClub', {
                 name,
                 description,
-                category,
-                createdBy
-            });
+                category
+                        });
             if (response.status === 201) {
                 setMessage('Club created successfully!');
                 setName('');
                 setDescription('');
                 setCategory('');
-                setCreatedBy('');
             } else {
                 setMessage('Failed to create club.');
             }
@@ -32,6 +32,7 @@ const CreateClubForm = () => {
             console.error('Error creating club:', error);
             setMessage('Failed to create club.');
         }
+        setLoading(false); // Stop loading
     };
 
     return (
@@ -51,11 +52,14 @@ const CreateClubForm = () => {
                     <label>Category:</label>
                     <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} required />
                 </div>
-                <div>
-                    <label>Created By:</label>
-                    <input type="text" value={createdBy} onChange={(e) => setCreatedBy(e.target.value)} required />
-                </div>
-                <button type="submit">Create Club</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? (
+                        <div className="loading-spinner"></div>
+                    ) : (
+                        'Create Club'
+                    )}
+                </button>
+                {loading && <p className="loading-text">Creating...</p>}
             </form>
         </div>
     );

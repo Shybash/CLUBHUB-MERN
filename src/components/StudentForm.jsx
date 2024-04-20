@@ -1,28 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './StudentForm.css';
 
 const StudentForm = () => {
   const [rollNum, setRollNum] = useState('');
   const [name, setName] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
   const [club, setClub] = useState('');
   const [error, setError] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [clubOptions, setClubOptions] = useState([]);
 
-  const clubOptions = ['Riti', 'Alap', 'Mudra', 'Abhinaya', 'Recurse','vachan','Traces of Lenses','Kreeda']; // Sample club names
+  useEffect(() => {
+    // Fetch club options from backend when component mounts
+    fetchClubOptions();
+  }, []);
+
+  const fetchClubOptions = async () => {
+    try {
+      const response = await axios.get('https://clubhub-backend.vercel.app/api/GetClubs');
+      if (response.data && Array.isArray(response.data)) {
+        setClubOptions(response.data.map(club => club.name));
+      } else {
+        setError('Invalid data format received from the server.');
+        console.error('Invalid data format received from the server:', response.data);
+      }
+    } catch (error) {
+      setError('An error occurred while fetching club options. Please try again.');
+      console.error('Error fetching club options:', error);
+    }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`https://clubhub-backend.vercel.app/api/studentForm`, {
+      const response = await axios.post('https://clubhub-backend.vercel.app/api/studentForm', {
         rollNum,
         name,
+        contactNumber,
         club
       });
       console.log(response.data);
       setRollNum('');
       setName('');
+      setContactNumber('');
       setClub('');
       setSubmitted(true);
       setTimeout(() => {
@@ -30,7 +52,7 @@ const StudentForm = () => {
       }, 3000);
     } catch (error) {
       setError('An error occurred. Please try again.');
-      console.log(error);
+      console.error('Error submitting form:', error);
     }
   };
 
@@ -45,6 +67,18 @@ const StudentForm = () => {
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
           <input type="text" className="form-control" id="name" placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)} required />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="contactNumber" className="form-label">Contact Number</label>
+          <input 
+            type="text" 
+            className="form-control" 
+            id="contactNumber" 
+            placeholder="Enter Contact Number" 
+            value={contactNumber} 
+            onChange={(e) => setContactNumber(e.target.value.replace(/\D/g, '').slice(0, 10))} 
+            required 
+          />
         </div>
         <div className="mb-3">
           <label htmlFor="club" className="form-label">Club</label>

@@ -48,7 +48,7 @@ function NavbarClg() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbar-pages">
-          <ul className="navbar-nav ml-auto">
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link className="nav-link active" to="/College">
                 Home
@@ -67,6 +67,11 @@ function NavbarClg() {
             <li className="nav-item">
               <Link className="nav-link" to="/clubform">
                ClubForm
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/ClubMembers">
+               ClubMembers
               </Link>
             </li>
             <li className="nav-item">

@@ -31,7 +31,7 @@ function Navbar() {
       </button>
 
       <div className="collapse navbar-collapse" id="navbar-pages">
-        <ul className="navbar-nav ml-auto">
+        <ul className="navbar-nav ms-auto">
           <li className="nav-item">
             <Link className="nav-link active" to="/">
               Home
@@ -41,11 +41,6 @@ function Navbar() {
           <li className="nav-item">
             <Link className="nav-link" to="/about">
               About
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/contact">
-              ContactUs
             </Link>
           </li>
           <li className="nav-item">
