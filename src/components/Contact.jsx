@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Contact.css'; // Import CSS file
 
-const Contact= () => {
+const Contact = () => {
   const [query, setQuery] = useState('');
   const [suggestion, setSuggestion] = useState('');
 
@@ -21,16 +22,17 @@ const Contact= () => {
   };
 
   return (
-    <div>
-      <h2>Suggestion Form</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="contact-card">
+      <h2>Contact Us</h2>
+      <p>Have a question or suggestion? We'd love to hear from you!</p>
+      <form className="contact-form" onSubmit={handleSubmit}>
         <div>
-          <label>Query:</label>
-          <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
+          <label htmlFor="query">Query:</label>
+          <input type="text" id="query" value={query} onChange={(e) => setQuery(e.target.value)} />
         </div>
         <div>
-          <label>Suggestion:</label>
-          <textarea value={suggestion} onChange={(e) => setSuggestion(e.target.value)} />
+          <label htmlFor="suggestion">Suggestion:</label>
+          <textarea id="suggestion" value={suggestion} onChange={(e) => setSuggestion(e.target.value)} />
         </div>
         <button type="submit">Submit</button>
       </form>

@@ -1,0 +1,36 @@
+/* In your CSS file */
+@import '~typeface-roboto'; /* Import Roboto font */
+
+.HomeStud{
+
+  margin-top:5rem;
+}
+.welcome{
+  font-family: 'Roboto', sans-serif; /* Apply Roboto font to the "Welcome" text */
+}
+.clubList{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-title{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.club-links{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+

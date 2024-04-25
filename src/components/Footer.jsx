@@ -62,7 +62,7 @@ const Footer = () => {
       </div>
       </div>
       <div className="footer-info">
-        <p>&copy; {currentYear} Document Verification. All Rights Reserved.</p>
+        <p>&copy; {currentYear} CLUBHUB. All Rights Reserved.</p>
       </div>
 
     </footer>

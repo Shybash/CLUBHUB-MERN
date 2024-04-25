@@ -1,34 +1,16 @@
 /* StudentList.css */
 
 /* Center the content vertically and horizontally */
-.tab {
+.student-list-container {
   margin-top: 5rem;
 }
-
-.container {
+.student-list{
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-}
-
-/* Style for the main content area */
-.content {
-  width: 80%; /* Adjust width as needed */
-}
-
-/* Style for the loading spinner */
-.spinner {
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-/* Style for the error message */
-.error {
-  color: red;
-  text-align: center;
-}
+
 
 /* Style for the club name */
 .club-name {
@@ -93,6 +75,7 @@ button:hover {
 
 /* Style for description */
 .description {
+  
   width: 80%;
   padding: 20px;
   border-radius: 8px;

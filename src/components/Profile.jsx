@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import './Profile.css';
+import './Profile.css';
 
 const Profile = () => {
     const [studentDetails, setStudentDetails] = useState(null);
@@ -44,7 +44,6 @@ const Profile = () => {
                     <h2>Student Profile</h2>
                     <p>Name: {studentDetails.username}</p>
                     <p>Roll Number: {studentDetails.rollnum}</p>
-                    <p>Email: {studentDetails.email}</p>
                     <p>Image Name: {studentDetails.imageName}</p>
                     <p>Created: {new Date(studentDetails.created).toLocaleString()}</p>
                     {/* Add more student details as needed */}

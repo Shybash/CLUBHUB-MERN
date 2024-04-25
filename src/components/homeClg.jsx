@@ -1,7 +1,7 @@
 // HomePage.js
 
 import React from 'react';
-import './HomeStu.css'; // Import CSS file for styling
+import './HomeStud.css'; // Import CSS file for styling
 
 const HomeClg = () => {
     return (

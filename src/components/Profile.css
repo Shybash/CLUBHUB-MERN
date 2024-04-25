@@ -1,35 +1,39 @@
-/* Profile.css */
-
+/* Style for the profile container */
 .profile-container {
-    margin-top: 5rem;
-    max-width: 600px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .profile-header {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .profile-header h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .profile-details {
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-  }
-  
-  .profile-details p {
-    margin-bottom: 10px;
-  }
-  
-  .profile-error {
-    color: red;
-    margin-top: 10px;
-  }
-  
+  max-width: 600px;
+  margin: 5rem auto; /* Center the profile container horizontally */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Style for the heading */
+.profile-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Style for the profile details */
+.profile-container p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Style for loading text */
+.loading {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Style for error text */
+.error {
+  font-size: 18px;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+  margin-top: 50px;
+}
