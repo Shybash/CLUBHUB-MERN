@@ -10,7 +10,6 @@ import {useAuth} from './components/Authcontext';
 import NavbarStu from './components/NavbarStu';
 import StudentForm from './components/StudentForm';
 import NavbarClg from './components/NavbarClg';
-import HomeClg from './components/homeClg';
 import StudentList from './components/StudentList';
 import Footer from './components/Footer';
 import Clubs from './components/ClubTabs';
@@ -48,10 +47,8 @@ function App() {
         ) : (
           <Route path="*" element={<> <Navbar /><LoginTabs /></>} />
         )}
-
         {authenticated ?(
           <>
-          <Route path="/College" element={<><NavbarClg /> <HomeClg /></>} />
           <Route path="/StudentList" element={<><NavbarClg /> <StudentList /></>} />
           <Route path="/clubform" element={<> <NavbarClg /> <ClubForm /></>} />
           <Route path="/ClubMembers" element={<><NavbarClg /> <ClubMembers /> </>} />

@@ -38,17 +38,18 @@ const Profile = () => {
     }
 
     return (
+        <div className="backgroun">
         <div className="profile-container">
             {studentDetails && (
                 <div>
                     <h2>Student Profile</h2>
                     <p>Name: {studentDetails.username}</p>
                     <p>Roll Number: {studentDetails.rollnum}</p>
-                    <p>Image Name: {studentDetails.imageName}</p>
                     <p>Created: {new Date(studentDetails.created).toLocaleString()}</p>
                     {/* Add more student details as needed */}
                 </div>
             )}
+            </div>
         </div>
     );
 };

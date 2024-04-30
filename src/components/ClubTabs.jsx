@@ -34,12 +34,6 @@ const ClubTabs = () => {
           <div>ALAP</div>
         </div>
         <div
-          className={`tab ${activeTab === 'riti' ? 'active' : ''}`}
-          onClick={() => handleTabClick('riti')}
-        >
-          <div>RITI</div>
-        </div>
-        <div
           className={`tab ${activeTab === 'recurse' ? 'active' : ''}`}
           onClick={() => handleTabClick('recurse')}
         >

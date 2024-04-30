@@ -1,12 +1,11 @@
 .reg-body {
-  
-  background: linear-gradient(to top right, #33ccff, #66aaff, #9966ff, #cc33ff, #ff00ff, #ff33cc, #ff6699, #ff9966, #ffcc33, #ffff00);
   font-family: sans-serif;
   margin-top:5rem;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   min-height: 100vh;
 }
 .reg-container {

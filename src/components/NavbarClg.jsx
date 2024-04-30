@@ -50,11 +50,6 @@ function NavbarClg() {
         <div className="collapse navbar-collapse" id="navbar-pages">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link active" to="/College">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/StudentList">
                 StudentList
               </Link>

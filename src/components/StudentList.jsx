@@ -63,7 +63,7 @@ const StudentList = () => {
 
 
   return (
-    <div>
+    <div className="studentlis">
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
@@ -74,7 +74,7 @@ const StudentList = () => {
           {Object.keys(groupedStudents).map((club, index) => (
             <div key={index}>
               <h3 className="club-name">{club} Club</h3>
-              <div className="student-table">
+              <div className="student-table table-responsive-sm">
                 <table>
                   <thead>
                     <tr>
@@ -90,7 +90,7 @@ const StudentList = () => {
                         <td>{student.rollNum}</td>
                         <td>{student.name}</td>
                         <td>{student.contactNumber}</td>
-                        <td>
+                        <td className>
                           <button className="butt" onClick={() => handleDelete(student._id)}>Delete</button>
                           <button className="butt" onClick={() => handleAccept(student._id)}>Accept</button>
                         </td>

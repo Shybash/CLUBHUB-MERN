@@ -36,6 +36,7 @@ const CreateClubForm = () => {
     };
 
     return (
+        <div className="clubhome">
         <div className="create-club-form">
             <h2>Create a New Club</h2>
             {message && <p>{message}</p>}
@@ -61,6 +62,7 @@ const CreateClubForm = () => {
                 </button>
                 {loading && <p className="loading-text">Creating...</p>}
             </form>
+        </div>
         </div>
     );
 }

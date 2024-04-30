@@ -12,6 +12,7 @@ const RegisterTabs=()=>{
 
     return(
         <div className='reg-body'>
+            
         <div className="reg-container space registration-tabs-container">
             <ul className="nav nav-tabs">
                 <li className="reg-nav-item">

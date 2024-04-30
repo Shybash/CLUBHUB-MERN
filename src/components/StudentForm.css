@@ -1,20 +1,26 @@
 /* StudentForm.css */
+.back{
+    margin-top:4.9rem;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 
+}
 .Formcontainer {
     max-width: 400px;
-    margin: 100px auto; /* Updated margin to auto to center vertically and horizontally */
+    margin: auto; /* Updated margin to auto to center vertically and horizontally */
     padding: 20px; /* Added padding for spacing */
+    
 }
 
 .Formcontainer h1 {
     text-align: center;
     margin-bottom: 20px;
+    color:white;
 }
 .forms {
     padding: 20px;
     margin: 10px;
     border-radius: 10px;
-    background-color: #ffffff6e; /* White background */
+    background-color: white; /* White background */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
   }
   
@@ -47,4 +53,7 @@
 
 .submitbtn:hover {
     background-color: #0056b3;
+}
+.submission-popup{
+    color:white;
 }

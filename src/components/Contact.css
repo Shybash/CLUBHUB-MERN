@@ -1,5 +1,10 @@
 /* Contact card styling */
 /* Contact card styling */
+.backgr{
+  margin-top:4.9rem;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  padding:20px;
+}
 .contact-card {
   background-color: #f8f9fa;
   border: 1px solid #ced4da;
@@ -7,7 +12,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 40px;
   max-width: 600px;
-  margin: 5rem auto; /* Center horizontally and add margin for spacing */
+  margin: auto; /* Center horizontally and add margin for spacing */
 }
 
 

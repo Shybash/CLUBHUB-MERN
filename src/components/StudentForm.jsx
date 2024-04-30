@@ -57,6 +57,7 @@ const StudentForm = () => {
   };
 
   return (
+    <div className="back">
     <div className="Formcontainer">
       <h1>Apply To Join Club</h1>
       <form className="forms" onSubmit={onSubmit}>
@@ -93,6 +94,7 @@ const StudentForm = () => {
         <button type="submit" className="btn btn-primary submitbtn">Submit</button>
       </form>
       {submitted && <div className="submission-popup">Submitted Successfully!</div>}
+    </div>
     </div>
   );
 };

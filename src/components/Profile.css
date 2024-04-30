@@ -1,7 +1,13 @@
 /* Style for the profile container */
+.backgroun{
+  margin-top:4.9rem;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  padding:20px;
+
+}
 .profile-container {
   max-width: 600px;
-  margin: 5rem auto; /* Center the profile container horizontally */
+  margin: auto; /* Center the profile container horizontally */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;

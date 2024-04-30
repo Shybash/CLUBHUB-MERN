@@ -1,51 +1,105 @@
 /* Home.css */
 
-/* Styles for the entire home component */
+/* General styles */
 .home {
-  margin-top:5rem;
+  margin-top: 4.9rem;
+  padding: 20px;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+
+/* Welcome section */
+.welcome {
+  font-size: 3rem;
+  font-family: 'Arial Black', sans-serif;
+  overflow: hidden;
+  white-space: nowrap;
+  text-shadow: 0 0 10px #00fff3, 0 0 20px #00fff3, 0 0 30px #00fff3;
+  animation: typewriter 2s steps(20) forwards;
+}
+
+/* Header section */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+}
+
+/* Login/Register section */
+.logContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
 }
 
-.first{
-  display: flex;
+/* Image section */
+.homeimg {
+  max-width: 100%;
+  height: auto; /* Adjust height based on width */
+  border-radius: 10px;
+  margin-right: 20rem;
 }
 
-.buttons{
-  margin-left:50px;
+/* Buttons section */
+.buttons {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
-.register{
-  margin-right:10px;
+
+.register,
+.login {
+  margin: 0 10px;
 }
-.login{
-  margin-left:10px;
-}
-.white-box {
-  background-color: rgb(192, 192, 14);
-  padding: 20px;
-  border-radius: 8px;
+
+/* Content section */
+.contentt{
+  max-width: 900px;
+  font-size: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0 auto;
 }
 
-.club {
-  color: #007bff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.contentt p {
+  margin-bottom: 15px;
 }
 
-.clubhub-info p {
-  margin-bottom: 20px;
+/* Animation */
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
-
-.spinner-border {
-  margin-right: 5px;
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .logContainer {
+    flex-direction: column;
+  }
+  
+  .homeimg {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }
 
+@media screen and (max-width: 600px) {
+  .welcome {
+    font-size: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .content {
+    font-size: 1.2rem;
+  }
+}

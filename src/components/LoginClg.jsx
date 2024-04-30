@@ -47,7 +47,7 @@ const Loginclg = () => {
         
             await login(newToken);
             localStorage.setItem("token", newToken);
-            navigate("/College"); // Navigate to "/College" route
+            navigate("/StudentList"); // Navigate to "/College" route
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 setError("User not found or invalid password");

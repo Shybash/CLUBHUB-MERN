@@ -22,6 +22,8 @@ const Contact = () => {
   };
 
   return (
+    <div className="backgr">
+      
     <div className="contact-card">
       <h2>Contact Us</h2>
       <p>Have a question or suggestion? We'd love to hear from you!</p>
@@ -36,6 +38,9 @@ const Contact = () => {
         </div>
         <button type="submit">Submit</button>
       </form>
+      
+    </div>
+  
     </div>
   );
 };

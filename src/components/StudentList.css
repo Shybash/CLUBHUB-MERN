@@ -1,27 +1,28 @@
 /* StudentList.css */
 
 /* Center the content vertically and horizontally */
-.student-list-container {
-  margin-top: 5rem;
+.studentlis {
+  margin-top: 4.9rem;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  padding: 20px; /* Adjust padding */
 }
-.student-list{
+
+.student-list {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: yellowgreen;
 }
-
-
 
 /* Style for the club name */
 .club-name {
-  text-transform:uppercase;
+  text-transform: uppercase;
   text-align: center;
-  color: #007bff; /* Blue color for club names */
-
+  color: white; /* Blue color for club names */
 }
-.StudentList{
+
+.StudentList {
   text-align: center;
-  
 }
 
 /* Style for the tables */
@@ -32,26 +33,25 @@
 
 /* Style for each table */
 table {
-  width: 90%;
+  width: 100%; 
   border-collapse: collapse;
   margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Apply box shadow effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
 }
 
 /* Style for table headers */
 th {
   background-color: rgb(124, 206, 134);
-  padding: 12px 8px; /* Increase padding for better appearance */
+  padding: 8px; 
   text-align: left;
-  width: 33%; /* Set fixed width for each column */
 }
 
 /* Style for table data */
 td {
   background-color: #fff;
-  padding: 12px 8px; /* Increase padding for better appearance */
+  padding: 8px; 
   text-align: left;
-  width: 33%; /* Set fixed width for each column */
 }
 
 /* Style for delete button */
@@ -63,9 +63,14 @@ button {
   cursor: pointer;
 }
 
+.butt{
+  margin:2px;
+}
+
 button:hover {
   background-color: #c82333;
 }
+
 /* Style for description box */
 .description-box {
   display: flex;
@@ -75,11 +80,10 @@ button:hover {
 
 /* Style for description */
 .description {
-  
   width: 80%;
   padding: 20px;
   border-radius: 8px;
-  background-color:rgb(248, 248, 8);
+  background-color: rgb(248, 248, 8);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   font-weight: bold;
@@ -87,3 +91,5 @@ button:hover {
   color: black;
   text-align: justify;
 }
+
+

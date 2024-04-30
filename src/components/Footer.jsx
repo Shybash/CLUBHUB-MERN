@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <div className="foot">
     <footer className="footer">
-      <h1 className="clubhub">CLUB HUB</h1>
+      <h1 className="clubhubb">CLUB HUB</h1>
       <div className="footer-content">
         <div className="social-media">
           <h3>Follow Us</h3>
@@ -44,7 +44,7 @@ const Footer = () => {
             </li>
             <li>
               <FontAwesomeIcon icon={faEnvelope} />
-              <a href="/contact">Contact Us</a>
+              <a href="/suggestion">Contact Us</a>
             </li>
             <li>
               <FontAwesomeIcon icon={faEnvelope} />

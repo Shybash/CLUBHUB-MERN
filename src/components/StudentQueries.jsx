@@ -32,6 +32,7 @@ const StudentQueries = () => {
   };
 
   return (
+    <div className="cont">
     <div className="student-queries-container">
       <h2 className="student-queries-title">Student Queries</h2>
       {loading ? (
@@ -47,6 +48,7 @@ const StudentQueries = () => {
           ))}
         </ul>
       )}
+    </div>
     </div>
   );
 };
