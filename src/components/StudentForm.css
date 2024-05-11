@@ -6,10 +6,15 @@
 }
 .Formcontainer {
     max-width: 400px;
-    margin: auto; /* Updated margin to auto to center vertically and horizontally */
-    padding: 20px; /* Added padding for spacing */
-    
+    margin: auto;
+    padding: 20px;
+    transition: box-shadow 0.3s ease; /* Added transition property */
+  }
+  
+  .Formcontainer:hover {
+    box-shadow: 0 8px 16px rgb(255, 255, 255); /* Changed shadow color to white on hover */
 }
+  
 
 .Formcontainer h1 {
     text-align: center;

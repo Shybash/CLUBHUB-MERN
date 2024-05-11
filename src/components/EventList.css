@@ -1,0 +1,43 @@
+/* EventList.css */
+.event-list {
+    margin-top:4.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .event-card {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .event-card h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .event-card p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .event-card p:first-child {
+    margin-top: 0;
+  }
+  
+  .event-card p:last-child {
+    margin-bottom: 0;
+  }
+  

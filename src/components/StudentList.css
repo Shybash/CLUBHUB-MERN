@@ -26,14 +26,14 @@
 }
 
 /* Style for the tables */
-.tables {
+.student-table {
   display: flex;
   justify-content: center;
 }
 
 /* Style for each table */
-table {
-  width: 100%; 
+.student-table table {
+  width: 80%; /* Adjust table width */
   border-collapse: collapse;
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
@@ -41,33 +41,32 @@ table {
 }
 
 /* Style for table headers */
-th {
+.student-table th {
   background-color: rgb(124, 206, 134);
   padding: 8px; 
   text-align: left;
+  width: 25%; /* Set a fixed width for each column */
 }
 
 /* Style for table data */
-td {
+.student-table td {
   background-color: #fff;
   padding: 8px; 
   text-align: left;
+  width: 25%; /* Set a fixed width for each column */
 }
 
 /* Style for delete button */
-button {
+.student-table button.butt {
   padding: 5px 10px;
   background-color: #dc3545;
   color: white;
   border: none;
   cursor: pointer;
+  margin: 2px;
 }
 
-.butt{
-  margin:2px;
-}
-
-button:hover {
+.student-table button.butt:hover {
   background-color: #c82333;
 }
 
@@ -91,5 +90,3 @@ button:hover {
   color: black;
   text-align: justify;
 }
-
-

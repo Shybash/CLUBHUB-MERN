@@ -20,6 +20,8 @@ import ClubMembers from './components/ClubMembers';
 import Suggestion from './components/Contact';
 import HomeStud from './components/HomeStud';
 import StudentQueries from './components/StudentQueries';
+import Event from './components/Events';
+import EventList from './components/EventList';
 // export const StoreContext = createContext();
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
           <Route path="/Student" element={ <> <NavbarStu /> <HomeStud /></>} />
           <Route path="/StudentForm" element={<><NavbarStu /><StudentForm /></>} />
           <Route path="/Clubs" element={<><NavbarStu /> <Clubs /> </>} />
+          <Route path="/GetEvents" element={<> <NavbarStu /> <EventList /> </>}  />
           <Route path="/suggestion" element={<><NavbarStu /> <Suggestion /></>} />
           <Route path="/Profile" element={<><NavbarStu /> <Profile /> </>} />
           </>
@@ -51,6 +54,7 @@ function App() {
           <>
           <Route path="/StudentList" element={<><NavbarClg /> <StudentList /></>} />
           <Route path="/clubform" element={<> <NavbarClg /> <ClubForm /></>} />
+          <Route path="/Events" element={<> <NavbarClg /><Event /></>} />
           <Route path="/ClubMembers" element={<><NavbarClg /> <ClubMembers /> </>} />
           <Route path="/queries" element={<><NavbarClg /> <StudentQueries /> </>} />
           </>

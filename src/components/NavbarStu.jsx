@@ -62,6 +62,11 @@ function NavbarStu() {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/GetEvents">
+                  Events
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/suggestion">
                   Queries
                 </Link>

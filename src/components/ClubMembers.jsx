@@ -53,7 +53,7 @@ const ClubMembers = () => {
             .map((club, index) => (
               <div key={index}>
                 <h3 className="club-name">{club} Club</h3>
-                <div className="tabless table-responsive-sm">
+                <div className="clubmember table-responsive-sm">
                   <table>
                     <thead className="c-head">
                       <tr>
