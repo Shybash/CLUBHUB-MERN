@@ -1,0 +1,63 @@
+.event {
+    margin-top: 4.5rem;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    padding: 20px;
+}
+
+.event-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 100%; /* Set maximum width to ensure responsiveness */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.events-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.events-form input,
+.events-form select,
+.events-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    width: 100%; /* Set width to fill the container */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.events-form input:focus,
+.events-form select:focus,
+.events-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.events-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Set width to fill the container */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.events-form button:hover {
+    background-color: #0056b3;
+}
+
+.messages {
+    color: #007bff;
+}

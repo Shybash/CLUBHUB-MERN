@@ -21,17 +21,20 @@ const EventList = () => {
   };
 
   return (
+    <div className="get-events">
+      <h1 className="upcoming-events">Upcoming Events</h1>
     <div className="event-list">
       {events.map((event, index) => (
         <div key={index} className="event-card">
-          <h3>{event.title}</h3>
+          <h1>{event.name}</h1>
           <p>Date: {new Date(event.date).toLocaleDateString()}</p>
           <p>Time: {event.time}</p>
-          <p>Venue: {event.venue}</p>
+          <p>Venue: {event.location}</p>
           <p>Description: {event.description}</p>
           {/* Display all fields from the event model */}
         </div>
       ))}
+    </div>
     </div>
   );
 };
