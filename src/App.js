@@ -20,7 +20,7 @@ import ClubMembers from './components/ClubMembers';
 import Suggestion from './components/Contact';
 import HomeStud from './components/HomeStud';
 import StudentQueries from './components/StudentQueries';
-import Event from './components/Events';
+// import Event from './components/Events';
 import EventList from './components/EventList';
 // export const StoreContext = createContext();
 
@@ -54,7 +54,7 @@ function App() {
           <>
           <Route path="/StudentList" element={<><NavbarClg /> <StudentList /></>} />
           <Route path="/clubform" element={<> <NavbarClg /> <ClubForm /></>} />
-          <Route path="/Events" element={<> <NavbarClg /><Event /></>} />
+          {/* <Route path="/Events" element={<> <NavbarClg /><Event /></>} /> */}
           <Route path="/ClubMembers" element={<><NavbarClg /> <ClubMembers /> </>} />
           <Route path="/queries" element={<><NavbarClg /> <StudentQueries /> </>} />
           </>

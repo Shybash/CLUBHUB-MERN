@@ -13,7 +13,7 @@ const EventList = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('https://clubhub-backend.vercel.app/api/Events');
+      const response = await axios.get('https://clubhub-backend.vercel.app/api/GetEvents');
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -27,7 +27,6 @@ const EventList = () => {
           <h3>{event.title}</h3>
           <p>Date: {new Date(event.date).toLocaleDateString()}</p>
           <p>Time: {event.time}</p>
-          <p>AM/PM: {event.ampm}</p>
           <p>Venue: {event.venue}</p>
           <p>Description: {event.description}</p>
           {/* Display all fields from the event model */}
