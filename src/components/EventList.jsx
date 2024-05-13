@@ -26,7 +26,7 @@ const EventList = () => {
     <div className="event-list">
       {events.map((event, index) => (
         <div key={index} className="event-card">
-          <h1>{event.name}</h1>
+          <h2>{event.name}</h2>
           <p>Date: {new Date(event.date).toLocaleDateString()}</p>
           <p>Time: {event.time}</p>
           <p>Venue: {event.location}</p>
