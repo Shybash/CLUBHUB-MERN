@@ -18,13 +18,13 @@
 } */
 
 .cardStyle:hover{
-  background-color: #1c2b34;
+  background-color: #d8cba2;
   color:white;
-  border:2px #008b86 solid;
+  border:2px #248d89 solid;
   transform: scale(1.1); /* Increase size by 10% */
   .cardtitl{
     /* border:2px #c2cece; */
-    color:antiquewhite;
+    color:rgb(34, 33, 32);
   }
   
 }
