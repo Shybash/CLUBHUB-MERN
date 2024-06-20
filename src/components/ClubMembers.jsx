@@ -31,7 +31,7 @@ const ClubMembers = () => {
   const handleDeleteMember = async (clubName, memberId) => {
     try {
       await axios.delete(`https://clubhub-backend.vercel.app/api/deleteClubMember/${clubName}/${memberId}`);
-      // After successful deletion, fetch updated club members
+      
       fetchClubMembers();
     } catch (error) {
       console.error('Error deleting club member:', error);
@@ -49,7 +49,7 @@ const ClubMembers = () => {
         <div className="club-members">
           <h2 className="club-members-title">Club Members</h2>
           {Object.keys(clubMembers)
-            .sort() // Sort the club names alphabetically
+            .sort() // Sorting  the club names alphabetically
             .map((club, index) => (
               <div key={index}>
                 <h3 className="club-name">{club} Club</h3>
@@ -61,19 +61,19 @@ const ClubMembers = () => {
                         <th>Roll Number</th>
                         <th>Name</th>
                         <th>Ph no.</th>
-                        <th>Action</th> {/* Add this column for the delete button */}
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       {clubMembers[club].map((member, rowIndex) => (
                         <tr key={member._id}>
-                          <td>{rowIndex + 1}</td> {/* Row number */}
+                          <td>{rowIndex + 1}</td>
                           <td>{member.rollNum}</td>
                           <td>{member.name}</td>
                           <td>{member.contactNumber}</td>
                           <td>
                             <button onClick={() => handleDeleteMember(club, member._id)}>Delete</button>
-                          </td> {/* Delete button */}
+                          </td> 
                         </tr>
                       ))}
                     </tbody>

@@ -1,4 +1,4 @@
-/* Mudra.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 .Mudra {
@@ -26,45 +26,36 @@
     color: #666;
     line-height: 1.6;
   }
-  
   .Mudra h2 {
     font-size: 20px;
     color: #333;
     margin-top: 20px;
   }
-  
   .Mudra table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
   }
-  
   .Mudra th,
   .Mudra td {
     padding: 0px;
     border: 1px solid black;
     text-align: left;
   }
-  
   .Mudra th {
     background-color: rgb(119, 119, 220);
   }
-  
   .Mudra ul {
     list-style-type: none;
     padding-left: 0;
   }
-  
   .Mudra ul li {
     margin-bottom: 5px;
   }
-  
-  /* Style links within the Mudra component */
-  .Mudra a {
+    .Mudra a {
     color: #007bff;
     text-decoration: none;
-  }
-  
+  } 
   .Mudra a:hover {
     text-decoration: underline;
   }

@@ -9,8 +9,8 @@ const RegisterClg = () => {
         password: '',
         confirmpassword: ''
     });
-    const [loading, setLoading] = useState(false); // Define loading state variable
-    const [error, setError] = useState(null); // Define error state variable
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null); 
 
     const changeHandler = e => {
         setData({ ...data, [e.target.name]: e.target.value });
@@ -18,27 +18,23 @@ const RegisterClg = () => {
 
     const submitHandler = async e => {
         e.preventDefault();
-        setLoading(true); // Set loading to true when submitting form
-        setError(null); // Reset error state
+        setLoading(true); 
+        setError(null); 
 
         try {
             const response = await axios.post(`https://clubhub-backend.vercel.app/api/RegisterClg`, data);
             alert(response.data);
-            setLoading(false); // Set loading to false after successful request
+            setLoading(false); 
         } catch (error) {
             console.error(error);
-            setLoading(false); // Set loading to false after error
+            setLoading(false); 
             
             if (error.response) {
-                // The request was made and the server responded with a status code
-                // Display the error message received from the server
                 setError(error.response.data.error || "An error occurred");
             } else if (error.request) {
-                // The request was made but no response was received
                 console.error(error.request);
                 setError("No response received from the server");
             } else {
-                // Something happened in setting up the request that triggered an Error
                 console.error('Error', error.message);
                 setError("An error occurred. Please try again later.");
             }
@@ -50,7 +46,7 @@ const RegisterClg = () => {
             <form onSubmit={submitHandler}>
                 <div className="form-group">
                     <h3>College Register</h3>
-                    {error && <p className="text-danger">{error}</p>} {/* Display error message if present */}
+                    {error && <p className="text-danger">{error}</p>} 
                     <label className="form-label">Username</label>
                     <input type="text" placeholder="username" name="username" onChange={changeHandler} className="form-control" />
                     <label className="form-label">Email</label>

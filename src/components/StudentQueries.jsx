@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './StudentQueries.css'; // Import the CSS file
+import './StudentQueries.css'; 
 
 const StudentQueries = () => {
   const [queries, setQueries] = useState([]);
@@ -24,7 +24,6 @@ const StudentQueries = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://clubhub-backend.vercel.app/api/deleteQuery/${id}`);
-      // Filter out the deleted query from the list
       setQueries(queries.filter(query => query._id !== id));
     } catch (error) {
       console.error('Error deleting student query:', error);

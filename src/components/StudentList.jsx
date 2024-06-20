@@ -26,7 +26,6 @@ const StudentList = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://clubhub-backend.vercel.app/api/deleteStudent/${id}`);
-      // Filter out the deleted student from the list
       setGroupedStudents(prevStudents => {
         const updatedStudents = { ...prevStudents };
         Object.keys(updatedStudents).forEach(club => {
@@ -42,13 +41,10 @@ const StudentList = () => {
 
   const handleAccept = async (id) => {
     try {
-        // Send request to accept the student
         await axios.post(`https://clubhub-backend.vercel.app/api/AcceptStudent/${id}`);
-        
-        // Remove the accepted student from the list
-        setGroupedStudents(prevStudents => {
+
+                setGroupedStudents(prevStudents => {
             const updatedStudents = { ...prevStudents };
-            // Loop through each club and filter out the accepted student
             Object.keys(updatedStudents).forEach(club => {
                 updatedStudents[club] = updatedStudents[club].filter(student => student._id !== id);
             });

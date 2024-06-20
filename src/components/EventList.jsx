@@ -1,8 +1,7 @@
-// EventList.js
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './EventList.css'; // Import your CSS file for styling
+import './EventList.css';
 
 const EventList = () => {
   const [events, setEvents] = useState([]);

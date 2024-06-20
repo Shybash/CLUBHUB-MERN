@@ -1,12 +1,12 @@
 // App.js
-import React, { useState, createContext } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home'; 
 import LoginTabs from './components/LoginTabs';
 import RegisterTabs from './components/RegisterTabs';
 import About from './components/About';
-import {useAuth} from './components/Authcontext';
+import { useAuth } from './components/Authcontext';
 import NavbarStu from './components/NavbarStu';
 import StudentForm from './components/StudentForm';
 import NavbarClg from './components/NavbarClg';
@@ -22,51 +22,53 @@ import HomeStud from './components/HomeStud';
 import StudentQueries from './components/StudentQueries';
 import EventList from './components/EventList';
 import Events from './components/Events';
-// export const StoreContext = createContext();
 
 function App() {
-  // const [token, setToken] = useState(null);
-  const {authenticated}=useAuth();
+  const { authenticated } = useAuth();
+
   return (
     <>
-      {/* <StoreContext.Provider value={[token, setToken]}> */}
-        <Router>
-          <Routes>
-            <Route path="/" element={<><Navbar /><Home /></>} />
-            <Route path="/Login" element={<> <Navbar /><LoginTabs /></>} /> {/* Changed path to "/login" */}
-            <Route path="/Register" element={<><Navbar /> <RegisterTabs /></>} />
-            <Route path="/About"    element={<> <Navbar /> <About /></>} />
-            <Route path="/faq" element={<><Navbar /> <Faq /></>} />
+      <Router>
+        <Routes>
+          <Route path="/" element={<><Navbar /><Home /></>} />
+          <Route path="/login" element={<><Navbar /><LoginTabs /></>} />
+          <Route path="/register" element={<><Navbar /><RegisterTabs /></>} />
+          <Route path="/about" element={<><Navbar /><About /></>} />
+          <Route path="/faq" element={<><Navbar /><Faq /></>} />
 
-            {authenticated ? (
-              <>
-          <Route path="/Student" element={ <> <NavbarStu /> <HomeStud /></>} />
-          <Route path="/StudentForm" element={<><NavbarStu /><StudentForm /></>} />
-          <Route path="/Clubs" element={<><NavbarStu /> <Clubs /> </>} />
-          <Route path="/GetEvents" element={<> <NavbarStu /> <EventList /> </>}  />
-          <Route path="/suggestion" element={<><NavbarStu /> <Suggestion /></>} />
-          <Route path="/Profile" element={<><NavbarStu /> <Profile /> </>} />
-          </>
-        ) : (
-          <Route path="*" element={<> <Navbar /><LoginTabs /></>} />
-        )}
-        {authenticated ?(
-          <>
-          <Route path="/StudentList" element={<><NavbarClg /> <StudentList /></>} />
-          <Route path="/clubform" element={<> <NavbarClg /> <ClubForm /></>} />
-          <Route path="/Events" element={<> <NavbarClg /><Events /></>} />
-          <Route path="/ClubMembers" element={<><NavbarClg /> <ClubMembers /> </>} />
-          <Route path="/queries" element={<><NavbarClg /> <StudentQueries /> </>} />
-          </>
-        ):(
-          <Route path="*" element={<> <Navbar /><LoginTabs /></>} />
-        )}
-          
-          </Routes>
-          <Footer />
-
-        </Router>
-      {/* </StoreContext.Provider> */}
+          {authenticated ? (
+            <>
+              <Route path="/student" element={<><NavbarStu /><HomeStud /></>} />
+              <Route path="/studentform" element={<><NavbarStu /><StudentForm /></>} />
+              <Route path="/clubs" element={<><NavbarStu /><Clubs /></>} />
+              <Route path="/getevents" element={<><NavbarStu /><EventList /></>} />
+              <Route path="/suggestion" element={<><NavbarStu /><Suggestion /></>} />
+              <Route path="/profile" element={<><NavbarStu /><Profile /></>} />
+              <Route path="/studentlist" element={<><NavbarClg /><StudentList /></>} />
+              <Route path="/clubform" element={<><NavbarClg /><ClubForm /></>} />
+              <Route path="/events" element={<><NavbarClg /><Events /></>} />
+              <Route path="/clubmembers" element={<><NavbarClg /><ClubMembers /></>} />
+              <Route path="/queries" element={<><NavbarClg /><StudentQueries /></>} />
+            </>
+          ) : (
+            <>
+              <Route path="/student" element={<Navigate to="/login" />} />
+              <Route path="/studentform" element={<Navigate to="/login" />} />
+              <Route path="/clubs" element={<Navigate to="/login" />} />
+              <Route path="/getevents" element={<Navigate to="/login" />} />
+              <Route path="/suggestion" element={<Navigate to="/login" />} />
+              <Route path="/profile" element={<Navigate to="/login" />} />
+              <Route path="/studentlist" element={<Navigate to="/login" />} />
+              <Route path="/clubform" element={<Navigate to="/login" />} />
+              <Route path="/events" element={<Navigate to="/login" />} />
+              <Route path="/clubmembers" element={<Navigate to="/login" />} />
+              <Route path="/queries" element={<Navigate to="/login" />} />
+            </>
+          )}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <Footer />
+      </Router>
     </>
   );
 }

@@ -1,13 +1,8 @@
 
-/* StudentList.css */
-
-/* Center the content vertically and horizontally */
-/* ClubMembers.css */
-
 .club-members {
     margin-top: 4.5rem;
     background: linear-gradient(to right, #2c3e50, #4ca1af);
-    padding: 20px; /* Adjust padding */
+    padding: 20px; 
   }
   
   .club-members-title {
@@ -20,7 +15,7 @@
   .club-name {
     text-transform: uppercase;
     text-align: center;
-    color: white; /* Blue color for club names */
+    color: white; 
   }
   .clubmember {
     display: flex;
@@ -28,27 +23,27 @@
   }
   
   .clubmember table {
-    width: 80%; /* Adjust table width */
+    width: 80%; 
     border-collapse: collapse;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     border-radius: 10px; 
   }
   
-  /* Style for table headers */
+
   .clubmember th {
     background-color: rgb(124, 206, 134);
     padding: 8px; 
     text-align: left;
-    width: 25%; /* Set a fixed width for each column */
+    width: 25%;
   }
   
-  /* Style for table data */
+
   .clubmember td {
     background-color: #fff;
     padding: 8px; 
     text-align: left;
-    width: 25%; /* Set a fixed width for each column */
+    width: 25%; 
   }
   tr:hover {
     background-color: #f2f2f2;

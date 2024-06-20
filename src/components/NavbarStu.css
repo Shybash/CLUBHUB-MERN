@@ -1,33 +1,27 @@
-/* Navbar.scss */
+
 .navbar {
-    background-color:#008b86; /* Change the background color */
+    background-color:#008b86;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000; /* Ensure navbar appears above other content */
+      z-index: 1000; 
   }
-  
-  
   .navbar-nav .nav-link {
     font-size:1.5rem;
-    color:black;
-    
-    text-decoration:none;
-    
+    color:black;  
+    text-decoration:none;   
   }
   .navbar-brand{
     margin-right:2rem;
   }
   
   .navbar-toggler-icon {
-    background-color:black; /* Change the color of the toggler icon */
+    background-color:black; 
   }
   #logout{
     align-items:end;
     justify-content: flex-end;
     float: right;
   }
-  
-  /* Additional styling as needed */
   

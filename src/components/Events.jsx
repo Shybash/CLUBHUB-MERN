@@ -34,7 +34,7 @@ const Events = () => {
       });
       setTimeout(() => {
         setMessage('');
-      }, 2000); // Message disappears after 2 seconds
+      }, 2000); 
     } catch (error) {
       console.error('Error adding event: ', error);
       setMessage('Error adding event');

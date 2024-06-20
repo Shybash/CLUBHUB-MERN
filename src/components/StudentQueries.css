@@ -1,6 +1,4 @@
-/* styles.css */
 
-/* Style for the container */
 .cont{
   background: linear-gradient(to right, #2c3e50, #4ca1af);
   margin-top: 4.5rem;
@@ -13,20 +11,17 @@
     background-color: white;
   }
   
-  /* Style for the heading */
   .student-queries-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
   }
   
-  /* Style for the loading message */
   .loading-message {
     font-style: italic;
     color: #888;
   }
   
-  /* Style for each query item */
   .query-item {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -34,13 +29,11 @@
     margin-bottom: 10px;
   }
   
-  /* Style for query text */
   .query-text {
     font-weight: bold;
     margin-bottom: 5px;
   }
   
-  /* Style for suggestion text */
   .suggestion-text {
     margin-bottom: 10px;
   }

@@ -25,18 +25,14 @@ const Profile = () => {
                 setLoading(false);
             }
         };
-
         fetchStudentDetails();
     }, []);
-
     if (loading) {
         return <div className="loading">Loading...</div>;
     }
-
     if (error) {
         return <div className="error">Error: {error}</div>;
     }
-
     return (
         <div className="backgroun">
         <div className="profile-container">
@@ -46,7 +42,6 @@ const Profile = () => {
                     <p>Name: {studentDetails.username}</p>
                     <p>Roll Number: {studentDetails.rollnum}</p>
                     <p>Created: {new Date(studentDetails.created).toLocaleString()}</p>
-                    {/* Add more student details as needed */}
                 </div>
             )}
             </div>

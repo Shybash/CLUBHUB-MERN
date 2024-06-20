@@ -1,10 +1,3 @@
-/* LoginStudent.css */
-
-/* Centering the content */
-/* Login.css */
-
-
-
 
 .login-container {
   background-color:  white;
@@ -33,8 +26,6 @@ input[type="password"] {
   border-radius: 3px;
   margin-bottom: 15px;
 }
-
-
 button[type="submit"] {
   background-color: #4CAF50;
   color: white;
@@ -47,9 +38,6 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #45a049;
 }
-
-
-
 a {
   color: #4CAF50;
   text-decoration: none;
@@ -64,7 +52,7 @@ a:hover {
 .password-icon {
   position: absolute;
   top: 40%;
-  right: 6px; /* Adjusted from right to left */
+  right: 6px;
   transform: translateY(-50%);
   cursor: pointer;
 }

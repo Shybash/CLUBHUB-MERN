@@ -9,12 +9,9 @@
 .event-list {
   display: flex;
   flex-wrap: wrap;
-
-  
 }
-
 .event-card {
-  width: calc(33.33% - 20px); /* Adjust the width as needed */
+  width: calc(33.33% - 20px); 
   margin: 10px;
   border: 1px solid #ccc;
   background-color: white;
@@ -26,22 +23,22 @@
 .event-card h2{
   margin-top: 0;
   color: #333;
-  font-weight: bold; /* Make h2 bold */
+  font-weight: bold;
 }
 
 .event-card p {
   margin: 5px 0;
-  font-weight: bold; /* Make p bold */
+  font-weight: bold;
 }
-/* Responsive CSS */
+
 @media screen and (max-width: 768px) {
   .event-card {
-    width: calc(50% - 20px); /* Adjust the width as needed for smaller screens */
+    width: calc(50% - 20px); 
   }
 }
 
 @media screen and (max-width: 480px) {
   .event-card {
-    width: calc(100% - 20px); /* Adjust the width as needed for even smaller screens */
+    width: calc(100% - 20px); 
   }
 }

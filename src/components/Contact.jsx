@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Contact.css'; // Import CSS file
+import './Contact.css'; 
 
 const Contact = () => {
   const [query, setQuery] = useState('');
@@ -12,7 +12,6 @@ const Contact = () => {
     try {
       await axios.post('https://clubhub-backend.vercel.app/api/StudentQuery', { query, suggestion });
       alert('Suggestion submitted successfully!');
-      // Clear form fields after successful submission
       setQuery('');
       setSuggestion('');
     } catch (error) {

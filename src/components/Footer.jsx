@@ -29,7 +29,7 @@ const Footer = () => {
                 <li key={index}>
                   <a href={link.url} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={link.icon} />
-                    <span>{link.name}</span> {/* Display the social media name */}
+                    <span>{link.name}</span> 
                   </a>
                 </li>
               ))}

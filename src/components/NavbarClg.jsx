@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Modal, Button } from 'react-bootstrap'; // Import Modal and Button from react-bootstrap
+import { Modal, Button } from 'react-bootstrap'; 
 import { useAuth } from './Authcontext';
 import { useNavigate } from 'react-router-dom';
 import './NavbarStu.css';
@@ -19,7 +19,6 @@ function NavbarClg() {
     setLoading(false);
   };
   return (
-
     <div>
     <nav className="navbar fixed-top navbar-expand-lg">
       <div className="container-fluid my-0.5">

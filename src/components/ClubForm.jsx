@@ -7,13 +7,13 @@ const CreateClubForm = () => {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false); // Track loading state
+    const [loading, setLoading] = useState(false); 
 
  
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true); // Start loading
+        setLoading(true);
         try {
             const response = await axios.post('https://clubhub-backend.vercel.app/api/CreateClub', {
                 name,
@@ -32,7 +32,7 @@ const CreateClubForm = () => {
             console.error('Error creating club:', error);
             setMessage('Failed to create club.');
         }
-        setLoading(false); // Stop loading
+        setLoading(false);
     };
 
     return (

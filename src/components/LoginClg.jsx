@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { useAuth } from './Authcontext'; // Import useAuth from your Authcontext
+import { useNavigate } from 'react-router-dom'; 
+import { useAuth } from './Authcontext';
 import './Login.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 
@@ -13,8 +13,8 @@ const Loginclg = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const navigate = useNavigate(); // Get navigate from react-router-dom
-    const { login } = useAuth(); // Get login function from your Authcontext
+    const navigate = useNavigate();
+    const { login } = useAuth(); 
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -47,7 +47,7 @@ const Loginclg = () => {
         
             await login(newToken);
             localStorage.setItem("token", newToken);
-            navigate("/StudentList"); // Navigate to "/College" route
+            navigate("/StudentList"); 
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 setError("User not found or invalid password");

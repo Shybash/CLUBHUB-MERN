@@ -1,10 +1,3 @@
-/* LoginStudent.css */
-
-/* Centering the content */
-/* Login.css */
-
-
-
 
 .reg-container {
     background-color:  white;
@@ -60,7 +53,7 @@
   .password-icon {
     position: absolute;
     top: 40%;
-    right: 6px; /* Adjusted from right to left */
+    right: 6px; 
     transform: translateY(-50%);
     cursor: pointer;
   }

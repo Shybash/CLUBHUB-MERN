@@ -8,28 +8,23 @@
 
 .footer-content {
   display: flex;
-  flex-wrap: wrap; /* Allow content to wrap on small screens */
+  flex-wrap: wrap; 
   justify-content: space-between;
 }
 
-/* Social media and useful links sections */
 .social-media,
 .useful-links,
 .contact-info {
-  flex-basis: 100%; /* Take full width on small screens */
-  margin-bottom: 30px; /* Add space below each section */
+  flex-basis: 100%; 
+  margin-bottom: 30px;
 }
-
-/* Section titles */
 .social-media h3,
 .useful-links h3,
 .contact-info h3 {
   font-size: 2rem;
-  margin-bottom: 15px; /* Add space below */
-  font-family: 'Roboto', sans-serif; /* Add stylish font */
+  margin-bottom: 15px; 
+  font-family: 'Roboto', sans-serif; 
 }
-
-/* Links */
 .social-media ul,
 .useful-links ul,
 .contact-info ul {
@@ -40,17 +35,15 @@
 .social-media ul li,
 .useful-links ul li,
 .contact-info ul li {
-  margin-bottom: 10px; /* Add space between links */
+  margin-bottom: 10px; 
 }
 
-/* Icon styles */
 .social-media a,
 .useful-links a {
   color: #fff;
   text-decoration: none;
-  margin-right: 10px; /* Add space between icon and text */
+  margin-right: 10px; 
 }
-
 .footer-info {
   text-align: center;
   margin-top: 20px;
@@ -59,18 +52,16 @@
 .footer-info p {
   margin: 0;
 }
-
-/* Responsive styles */
 @media only screen and (min-width: 768px) {
   .social-media,
   .useful-links,
   .contact-info {
-    flex-basis: 33.33%; /* Set width to 33.33% for medium and large screens */
+    flex-basis: 33.33%; 
   }
 }
 
 @media only screen and (min-width: 992px) {
   .footer-content {
-    flex-wrap: nowrap; /* Prevent content from wrapping on large screens */
+    flex-wrap: nowrap;
   }
 }

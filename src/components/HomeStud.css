@@ -21,9 +21,8 @@
   background-color: #d8cba2;
   color:white;
   border:2px #248d89 solid;
-  transform: scale(1.1); /* Increase size by 10% */
+  transform: scale(1.1); 
   .cardtitl{
-    /* border:2px #c2cece; */
     color:rgb(34, 33, 32);
   }
   
@@ -33,13 +32,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem; /* Increase font size */
-  font-weight: bold; /* Make text bold */
-  text-transform: uppercase; /* Convert text to uppercase */
-  color:  #1c2b34; /* Change text color */
-  margin-bottom: 1rem; /* Add some space below the title */
-  border-bottom: 2px solid #333; /* Add a border line under the title */
-  padding-bottom: 0.5rem; /* Adjust padding below the title */
+  font-size: 2rem; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  color:  #1c2b34; 
+  margin-bottom: 1rem; 
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.5rem;
 }
 
 .club-links{

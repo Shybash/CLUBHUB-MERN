@@ -17,14 +17,14 @@
 }
 
 .reg-nav-item {
-background-color: yellow; /* Blue background color */
-color: black; /* Text color */
-padding: 10px 20px; /* Adjust padding */
-border-radius: 5px; /* Rounded corners */
-text-decoration: none; /* Remove underline */
-margin-right: 10px; /* Adjust margin between links */
+background-color: yellow; 
+color: black; 
+padding: 10px 20px; 
+border-radius: 5px; 
+text-decoration: none; 
+margin-right: 10px; 
 }
 
 .reg-nav-item:hover {
-background-color: green; /* Darker hover color */
+background-color: green; 
 }

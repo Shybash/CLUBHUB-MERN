@@ -13,7 +13,6 @@ const StudentForm = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch club options from backend when component mounts
     fetchClubOptions();
     fetchStudentDetails();
   }, []);
@@ -77,12 +76,10 @@ const StudentForm = () => {
     }
   };
 
-  // Render loading indicator while fetching data
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // Render form when studentDetails is available
   return (
     <div className="back">
       <div className="Formcontainer">
@@ -96,8 +93,8 @@ const StudentForm = () => {
               className="form-control" 
               id="rollNum" 
               placeholder="Enter Roll Number" 
-              value={studentDetails.rollnum} // Populate with studentDetails.rollnum
-              readOnly // Make it non-editable
+              value={studentDetails.rollnum} 
+              readOnly 
               required 
             />
           </div>

@@ -18,16 +18,16 @@
   
   .Login-nav-item,
 .Login-nav-item {
-  background-color: yellow; /* Blue background color */
-  color: black; /* Text color */
-  padding: 10px 20px; /* Adjust padding */
-  border-radius: 5px; /* Rounded corners */
-  text-decoration: none; /* Remove underline */
-  margin-right: 10px; /* Adjust margin between links */
+  background-color: yellow;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px; 
+  text-decoration: none; 
+  margin-right: 10px; 
 }
 
 .Login-nav-item:hover {
-  background-color: green; /* Darker hover color */
+  background-color: green; 
 }
 
 .dont-have-account {
@@ -36,7 +36,7 @@
 }
 
 .register-link {
-  color: #007bff; /* Change color to your preference */
+  color: #007bff;
   text-decoration: none;
   font-weight: bold;
 }
@@ -47,7 +47,7 @@
 @media (max-width: 320px) {
   .login-container {
     margin-top:5rem;
-    padding: 10px; /* Adjust padding */
-    max-width: 90%; /* Adjust container width */
+    padding: 10px; 
+    max-width: 90%; 
   }
 }

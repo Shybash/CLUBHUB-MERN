@@ -20,23 +20,21 @@ const RegisterStudent = () => {
 
   const submitHandler = e => {
     e.preventDefault();
-    setLoading(true); // Set loading to true when submitting form
-    setError(null); // Reset error state
+    setLoading(true); 
+    setError(null); 
 
     axios.post(`https://clubhub-backend.vercel.app/api/register`, data)
       .then(res => {
         alert(res.data);
-        setLoading(false); // Set loading to false after successful request
+        setLoading(false); 
       })
       .catch(error => {
         console.error(error);
-        setLoading(false); // Set loading to false after error
+        setLoading(false); 
 
         if (error.response && error.response.data && error.response.data.error) {
-          // Display the error message sent by the server
           setError(error.response.data.error);
         } else {
-          // Display a generic error message for other types of errors
           setError("An error occurred. Please try again later.");
         }
       });
@@ -47,7 +45,7 @@ const RegisterStudent = () => {
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <h3>Register</h3>
-          {error && <p className="text-danger">{error}</p>} {/* Display error message if present */}
+          {error && <p className="text-danger">{error}</p>} 
           <label className="form-label">Username</label>
           <input type="text" placeholder="username" name="username" onChange={changeHandler} className="form-control" />
           <label className="form-label">Roll Number</label>

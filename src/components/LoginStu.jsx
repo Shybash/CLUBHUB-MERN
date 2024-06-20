@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { useAuth } from './Authcontext'; // Import useAuth from your Authcontext
+import { useNavigate } from 'react-router-dom'; 
+import { useAuth } from './Authcontext'; 
 import './Login.css';
 import '@fortawesome/fontawesome-free/css/all.css';
+import GoogleButton from 'react-google-button';
+
 
 const LoginStudent = () => {
     const [data, setData] = useState({
@@ -13,8 +15,12 @@ const LoginStudent = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const navigate = useNavigate(); // Get navigate from react-router-dom
-    const { login } = useAuth(); // Get login function from your Authcontext
+    const navigate = useNavigate(); 
+    const { login } = useAuth(); 
+
+    const handleLogin = () => {
+        window.location.href = 'http://localhost:4000/auth/google';
+      };
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -48,7 +54,7 @@ const LoginStudent = () => {
             await login(newToken);
             localStorage.setItem("token", newToken);
             localStorage.setItem("Id", response.data.user._id); 
-            navigate("/Student"); // Navigate to "/Student" route
+            navigate("/Student"); 
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 setError("User not found or invalid password");
@@ -111,6 +117,12 @@ const LoginStudent = () => {
                         )}
                     </button>
                 </form>
+                <GoogleButton
+                onClick={handleLogin}
+                className='google-login-btn'
+                type='dark'
+                disabled={loading} 
+              />
                 {error && <div className="alert alert-danger">{error}</div>}
             </div>
         </div>

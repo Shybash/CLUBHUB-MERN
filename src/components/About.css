@@ -1,6 +1,4 @@
-/* About.css */
 
-/* Common styles */
 .about-container {
   padding: 20px;
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
@@ -14,7 +12,7 @@
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 .display-4 {
@@ -44,8 +42,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
-/* Responsive styles */
 @media only screen and (max-width: 992px) {
   .containers {
     padding: 15px;
@@ -61,8 +57,6 @@ a:hover {
     font-size: 1rem;
   }
 }
-
-/* Adjusted background gradient for mobile screens */
 @media only screen and (max-width: 320px) {
   .about-container {
     background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
