@@ -41,7 +41,14 @@ export const AuthProvider = ({ children }) => {
             setAuthenticated(true);
 
             if (storedUser) {
-                setUser(JSON.parse(storedUser));
+                try {
+                    setUser(JSON.parse(storedUser));
+                } catch (error) {
+                    console.error('Failed to parse user from localStorage:', error);
+                    setUser(null);
+                    localStorage.removeItem('user');
+                    checkLoggedInStatus();
+                }
             } else {
                 checkLoggedInStatus();
             }
@@ -55,6 +62,8 @@ export const AuthProvider = ({ children }) => {
         setUser(newUser);
         localStorage.setItem('token', newToken);
         localStorage.setItem('user', JSON.stringify(newUser));
+        Cookies.set('token', newToken);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
         setAuthenticated(true);
     };
 
@@ -64,6 +73,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         Cookies.remove('token');
+        delete axios.defaults.headers.common['Authorization'];
         setAuthenticated(false);
     };
 
