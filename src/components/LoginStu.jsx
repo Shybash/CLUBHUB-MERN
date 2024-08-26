@@ -1,72 +1,69 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom'; 
 import { useAuth } from './Authcontext'; 
 import './Login.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import GoogleButton from 'react-google-button';
-
+import axios from 'axios';
 
 const LoginStudent = () => {
-    const [data, setData] = useState({
-        email: '',
-        password: ''
-    });
+    const [data, setData] = useState({ email: '', password: '' });
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate(); 
     const { login } = useAuth(); 
 
-    const handleLogin = () => {
-        window.location.href = 'http://localhost:4000/auth/google';
-      };
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (token) {
+            login(token); 
+            navigate('/student');
+        }
+    }, [login, navigate]);
+
+    const handleGoogleLogin = () => {
+        window.location.href = 'http://localhost:8000/auth/google';
+    };
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
-    }
+    };
 
     const changeHandler = e => {
         setData({ ...data, [e.target.name]: e.target.value });
-    }
+    };
 
     const submitHandler = async (e) => {
         e.preventDefault();
         setLoading(true);
+        setError(null); 
+    
         try {
-            const token = localStorage.getItem("token");
-
             const response = await axios.post(
-                `https://clubhub-backend.vercel.app/api/login`,
-                {
-                    email: data.email,
-                    password: data.password,
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
+                'http://localhost:8000/api/login',
+                { email: data.email, password: data.password },
+                { withCredentials: true } // Ensures cookies are sent with the request
             );
-
-            const newToken = response.data.token;
-
-            await login(newToken);
-            localStorage.setItem("token", newToken);
-            localStorage.setItem("Id", response.data.user._id); 
-            navigate("/Student"); 
-        } catch (error) {
-            if (error.response && error.response.status === 401) {
-                setError("User not found or invalid password");
+    
+            const token = Cookies.get('token');
+            console.log('Token from cookies after login:', token);
+    
+            if (token) {
+                await login(token); 
+                navigate('/student');
             } else {
-                console.error("Login Error:", error);
-                setError("An error occurred while logging in");
+                setError("Login failed. No token received.");
             }
+        } catch (error) {
+            console.error("Login error:", error);
+            setError(error.response?.data?.error || "An error occurred while logging in");
         } finally {
             setLoading(false);
         }
     };
-
+    
     return (
         <div className="login-container">
             <div className="club-hub">
@@ -97,7 +94,10 @@ const LoginStudent = () => {
                                 onChange={changeHandler}
                                 required
                             />
-                            <i className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={toggleShowPassword}></i>
+                            <i
+                                className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"} password-icon`}
+                                onClick={toggleShowPassword}
+                            ></i>
                         </div>
                     </div>
                     <button
@@ -118,15 +118,15 @@ const LoginStudent = () => {
                     </button>
                 </form>
                 <GoogleButton
-                onClick={handleLogin}
-                className='google-login-btn'
-                type='dark'
-                disabled={loading} 
-              />
+                    onClick={handleGoogleLogin}
+                    className='google-login-btn'
+                    type='dark'
+                    disabled={loading} 
+                />
                 {error && <div className="alert alert-danger">{error}</div>}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default LoginStudent;

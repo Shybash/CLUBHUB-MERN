@@ -9,7 +9,7 @@ import About from './components/About';
 import { useAuth } from './components/Authcontext';
 import NavbarStu from './components/NavbarStu';
 import StudentForm from './components/StudentForm';
-import NavbarClg from './components/NavbarClg';
+import NavbarClg from './components/NavbarClg'; 
 import StudentList from './components/StudentList';
 import Footer from './components/Footer';
 import Clubs from './components/ClubTabs';

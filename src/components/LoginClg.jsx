@@ -28,8 +28,6 @@ const Loginclg = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const token = localStorage.getItem("token");
-
             const response = await axios.post(
                 `https://clubhub-backend.vercel.app/api/LoginClg`,
                 {
@@ -37,16 +35,13 @@ const Loginclg = () => {
                     password: data.password,
                 },
                 {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
+                    withCredentials: true, // Ensure cookies are sent with the request
                 }
             );
         
             const newToken = response.data.token;
         
             await login(newToken);
-            localStorage.setItem("token", newToken);
             navigate("/StudentList"); 
         } catch (error) {
             if (error.response && error.response.status === 401) {
@@ -69,12 +64,12 @@ const Loginclg = () => {
                 <h2>College Login</h2>
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
-                        <label htmlFor="email">email:</label>
+                        <label htmlFor="email">Email:</label>
                         <input
                             type="email"
                             id="email"
                             name="email"
-                            value={data.username}
+                            value={data.email}
                             onChange={changeHandler}
                             required
                         />
