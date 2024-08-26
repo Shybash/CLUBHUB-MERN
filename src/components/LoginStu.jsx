@@ -17,13 +17,11 @@ const LoginStudent = () => {
 
     useEffect(() => {
         const token = Cookies.get('token');
-        console.log('Retrieved token from cookies:', token); 
         if (token) {
             login(token); 
             navigate('/student');
         }
     }, [login, navigate]);
-    
 
     const handleGoogleLogin = () => {
         window.location.href = 'https://clubhub-backend.vercel.app/auth/google';
@@ -33,7 +31,7 @@ const LoginStudent = () => {
         setShowPassword(!showPassword);
     };
 
-    const changeHandler = e => {
+    const changeHandler = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
     };
 
@@ -46,17 +44,21 @@ const LoginStudent = () => {
             const response = await axios.post(
                 'https://clubhub-backend.vercel.app/api/login',
                 { email: data.email, password: data.password },
-                { withCredentials: true } 
+                { withCredentials: true }
             );
     
-            const token = Cookies.get('token');
-            console.log('Token from cookies after login:', token);
+            if (response.status === 200) {
+                const token = Cookies.get('token');
+                console.log('Token from cookies after login:', token);
     
-            if (token) {
-                await login(token); 
-                navigate('/student');
+                if (token) {
+                    await login(token); 
+                    navigate('/student');
+                } else {
+                    setError("Login failed. No token received.");
+                }
             } else {
-                setError("Login failed. No token received.");
+                setError("Login failed. Please check your credentials.");
             }
         } catch (error) {
             console.error("Login error:", error);
