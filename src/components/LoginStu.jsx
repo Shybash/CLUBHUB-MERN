@@ -24,7 +24,7 @@ const LoginStudent = () => {
     }, [login, navigate]);
 
     const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:8000/auth/google';
+        window.location.href = 'https://clubhub-backend.vercel.app/auth/google';
     };
 
     const toggleShowPassword = () => {
@@ -42,7 +42,7 @@ const LoginStudent = () => {
     
         try {
             const response = await axios.post(
-                'http://localhost:8000/api/login',
+                'https://clubhub-backend.vercel.app/api/login',
                 { email: data.email, password: data.password },
                 { withCredentials: true } // Ensures cookies are sent with the request
             );

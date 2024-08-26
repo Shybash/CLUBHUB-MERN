@@ -1,60 +1,64 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom'; 
-import { useAuth } from './Authcontext';
+import { useAuth } from './Authcontext'; 
 import './Login.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 
 const Loginclg = () => {
-    const [data, setData] = useState({
-        email: '',
-        password: ''
-    });
+    const [data, setData] = useState({ email: '', password: '' });
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     const { login } = useAuth(); 
+
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (token) {
+            login(token); 
+            navigate('/StudentList');
+        }
+    }, [login, navigate]);
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
-    }
+    };
 
     const changeHandler = e => {
         setData({ ...data, [e.target.name]: e.target.value });
-    }
+    };
 
     const submitHandler = async (e) => {
         e.preventDefault();
         setLoading(true);
+        setError(null); 
+    
         try {
             const response = await axios.post(
-                `https://clubhub-backend.vercel.app/api/LoginClg`,
-                {
-                    email: data.email,
-                    password: data.password,
-                },
-                {
-                    withCredentials: true, // Ensure cookies are sent with the request
-                }
+                'https://clubhub-backend.vercel.app/api/LoginClg',
+                { email: data.email, password: data.password },
+                { withCredentials: true } 
             );
-        
-            const newToken = response.data.token;
-        
-            await login(newToken);
-            navigate("/StudentList"); 
-        } catch (error) {
-            if (error.response && error.response.status === 401) {
-                setError("User not found or invalid password");
+    
+            const token = Cookies.get('token');
+            console.log('Token from cookies after login:', token);
+    
+            if (token) {
+                await login(token); 
+                navigate('/StudentList');
             } else {
-                console.error("Login Error:", error);
-                setError("An error occurred while logging in");
+                setError("Login failed. No token received.");
             }
+        } catch (error) {
+            console.error("Login error:", error);
+            setError(error.response?.data?.error || "An error occurred while logging in");
         } finally {
             setLoading(false);
         }
     };
-
+    
     return (
         <div className="login-container">
             <div className="club-hub">
@@ -85,7 +89,10 @@ const Loginclg = () => {
                                 onChange={changeHandler}
                                 required
                             />
-                            <i className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"} password-icon`} onClick={toggleShowPassword}></i>
+                            <i
+                                className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"} password-icon`}
+                                onClick={toggleShowPassword}
+                            ></i>
                         </div>
                     </div>
                     <button
@@ -108,7 +115,7 @@ const Loginclg = () => {
                 {error && <div className="alert alert-danger">{error}</div>}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Loginclg;

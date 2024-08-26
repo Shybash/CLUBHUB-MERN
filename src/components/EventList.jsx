@@ -30,7 +30,6 @@ const EventList = () => {
               <p>Time: {event.time}</p>
               <p>Venue: {event.location}</p>
               <p>Description: {event.description}</p>
-              {/* Display all fields from the event model */}
             </div>
           ))
         ) : (
