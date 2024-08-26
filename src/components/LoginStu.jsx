@@ -17,11 +17,13 @@ const LoginStudent = () => {
 
     useEffect(() => {
         const token = Cookies.get('token');
+        console.log('Retrieved token from cookies:', token); 
         if (token) {
             login(token); 
             navigate('/student');
         }
     }, [login, navigate]);
+    
 
     const handleGoogleLogin = () => {
         window.location.href = 'https://clubhub-backend.vercel.app/auth/google';
@@ -44,7 +46,7 @@ const LoginStudent = () => {
             const response = await axios.post(
                 'https://clubhub-backend.vercel.app/api/login',
                 { email: data.email, password: data.password },
-                { withCredentials: true } // Ensures cookies are sent with the request
+                { withCredentials: true } 
             );
     
             const token = Cookies.get('token');
