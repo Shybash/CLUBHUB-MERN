@@ -6,32 +6,42 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [authenticated, setAuthenticated] = useState(false);
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
-        // Check if there's a token in the cookies on mount
+        checkLoggedInStatus();
+    }, []); // Only run once on component mount
+
+    const checkLoggedInStatus = () => {
         const storedToken = Cookies.get('token');
-        if (storedToken) {
+        const storedUserId = Cookies.get('userId');
+        if (storedToken && storedUserId) {
             setToken(storedToken);
+            setUserId(storedUserId);
             setAuthenticated(true);
         } else {
             setAuthenticated(false);
         }
-    }, []);
+    };
 
-    const login = (newToken) => {
+    const login = (newToken, newUserId) => {
         setToken(newToken);
-        Cookies.set('token', newToken, { expires: 7, secure: true, sameSite: 'Strict' });
+        setUserId(newUserId);
+        Cookies.set('token', newToken);
+        Cookies.set('userId', newUserId);
         setAuthenticated(true);
     };
 
     const logout = () => {
         setToken(null);
+        setUserId(null);
         Cookies.remove('token');
+        Cookies.remove('userId');
         setAuthenticated(false);
     };
 
     return (
-        <AuthContext.Provider value={{ token, authenticated, login, logout }}>
+        <AuthContext.Provider value={{ token, authenticated, userId, login, logout, checkLoggedInStatus }}>
             {children}
         </AuthContext.Provider>
     );

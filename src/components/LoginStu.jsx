@@ -17,6 +17,7 @@ const LoginStudent = () => {
 
     useEffect(() => {
         const token = Cookies.get('token');
+        console.log('Token from cookies on mount:', token);
         if (token) {
             login(token); 
             navigate('/student');
@@ -31,7 +32,7 @@ const LoginStudent = () => {
         setShowPassword(!showPassword);
     };
 
-    const changeHandler = (e) => {
+    const changeHandler = e => {
         setData({ ...data, [e.target.name]: e.target.value });
     };
 
@@ -44,21 +45,17 @@ const LoginStudent = () => {
             const response = await axios.post(
                 'https://clubhub-backend.vercel.app/api/login',
                 { email: data.email, password: data.password },
-                { withCredentials: true }
+                { withCredentials: true } // Ensures cookies are sent with the request
             );
     
-            if (response.status === 200) {
-                const token = Cookies.get('token');
-                console.log('Token from cookies after login:', token);
+            const token = Cookies.get('token');
+            console.log('Token from cookies after login:', token);
     
-                if (token) {
-                    await login(token); 
-                    navigate('/student');
-                } else {
-                    setError("Login failed. No token received.");
-                }
+            if (token) {
+                await login(token); 
+                navigate('/student');
             } else {
-                setError("Login failed. Please check your credentials.");
+                setError("Login failed. No token received.");
             }
         } catch (error) {
             console.error("Login error:", error);
