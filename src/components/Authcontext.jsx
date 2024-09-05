@@ -1,50 +1,47 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
+export const useAuth = () => useContext(AuthContext);
+
 export const AuthProvider = ({ children }) => {
-    const [token, setToken] = useState(null);
-    const [authenticated, setAuthenticated] = useState(false);
-    const [userId, setUserId] = useState(null);
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        checkLoggedInStatus();
-    }, []); // Only run once on component mount
+        const checkAuth = async () => {
+            try {
+                const response = await axios.get('https://clubhub-backend.vercel.app/api/is-logged-in', {
+                    withCredentials: true,
+                });
+                setUser(response.data.user);
+            } catch (error) {
+                console.log('Not authenticated', error);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    const checkLoggedInStatus = () => {
-        const storedToken = Cookies.get('token');
-        const storedUserId = Cookies.get('userId');
-        if (storedToken && storedUserId) {
-            setToken(storedToken);
-            setUserId(storedUserId);
-            setAuthenticated(true);
-        } else {
-            setAuthenticated(false);
-        }
+        checkAuth();
+    }, []);
+
+    const login = (userData) => {
+        setUser(userData);
+        navigate('/student');
     };
 
-    const login = (newToken, newUserId) => {
-        setToken(newToken);
-        setUserId(newUserId);
-        Cookies.set('token', newToken);
-        Cookies.set('userId', newUserId);
-        setAuthenticated(true);
-    };
-
-    const logout = () => {
-        setToken(null);
-        setUserId(null);
-        Cookies.remove('token');
-        Cookies.remove('userId');
-        setAuthenticated(false);
+    const logout = async () => {
+        await axios.post('https://clubhub-backend.vercel.app/api/logout', {}, { withCredentials: true });
+        setUser(null);
+        navigate('/login');
     };
 
     return (
-        <AuthContext.Provider value={{ token, authenticated, userId, login, logout, checkLoggedInStatus }}>
+        <AuthContext.Provider value={{ user, login, logout, loading }}>
             {children}
         </AuthContext.Provider>
     );
 };
-
-export const useAuth = () => useContext(AuthContext);
