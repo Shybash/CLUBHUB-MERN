@@ -12,8 +12,10 @@ const HomeStud = () => {
     const fetchClubs = async () => {
       try {
         const response = await axios.get(
-          "https://clubhub-backend.vercel.app/api/GetClubs"
+          "https://clubhub-backend.vercel.app/api/GetClubs",
+          { withCredentials: true }
         );
+        
         setClubs(response.data);
       } catch (error) {
         console.error("Error fetching clubs:", error);
