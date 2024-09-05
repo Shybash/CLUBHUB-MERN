@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { useAuth } from './Authcontext'; 
 import './Login.css';
@@ -14,15 +13,6 @@ const LoginStudent = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate(); 
     const { login } = useAuth(); 
-
-    useEffect(() => {
-        const token = Cookies.get('token');
-        console.log('Token from cookies on mount:', token);
-        if (token) {
-            login(token); 
-            navigate('/student');
-        }
-    }, [login, navigate]);
 
     const handleGoogleLogin = () => {
         window.location.href = 'https://clubhub-backend.vercel.app/auth/google';
@@ -45,17 +35,13 @@ const LoginStudent = () => {
             const response = await axios.post(
                 'https://clubhub-backend.vercel.app/api/login',
                 { email: data.email, password: data.password },
-                { withCredentials: true } // Ensures cookies are sent with the request
+                { withCredentials: true } 
             );
-    
-            const token = Cookies.get('token');
-            console.log('Token from cookies after login:', token);
-    
-            if (token) {
-                await login(token); 
+
+            if (response.status === 200) {
                 navigate('/student');
             } else {
-                setError("Login failed. No token received.");
+                console.log("Login failed.");
             }
         } catch (error) {
             console.error("Login error:", error);
