@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
         navigate('/login');
     };
 
-    const authenticated = !!user; // Determine if the user is authenticated
+    const authenticated = !!user; 
 
     return (
         <AuthContext.Provider value={{ user, login, logout, loading, authenticated }}>

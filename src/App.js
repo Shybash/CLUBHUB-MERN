@@ -1,6 +1,5 @@
-// App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom'; // No need to import Router here
 import Navbar from './components/Navbar';
 import Home from './components/Home'; 
 import LoginTabs from './components/LoginTabs';
@@ -28,47 +27,45 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<><Navbar /><Home /></>} />
-          <Route path="/login" element={<><Navbar /><LoginTabs /></>} />
-          <Route path="/register" element={<><Navbar /><RegisterTabs /></>} />
-          <Route path="/about" element={<><Navbar /><About /></>} />
-          <Route path="/faq" element={<><Navbar /><Faq /></>} />
+      <Routes>
+        <Route path="/" element={<><Navbar /><Home /></>} />
+        <Route path="/login" element={<><Navbar /><LoginTabs /></>} />
+        <Route path="/register" element={<><Navbar /><RegisterTabs /></>} />
+        <Route path="/about" element={<><Navbar /><About /></>} />
+        <Route path="/faq" element={<><Navbar /><Faq /></>} />
 
-          {authenticated ? (
-            <>
-              <Route path="/student" element={<><NavbarStu /><HomeStud /></>} />
-              <Route path="/studentform" element={<><NavbarStu /><StudentForm /></>} />
-              <Route path="/clubs" element={<><NavbarStu /><Clubs /></>} />
-              <Route path="/getevents" element={<><NavbarStu /><EventList /></>} />
-              <Route path="/suggestion" element={<><NavbarStu /><Suggestion /></>} />
-              <Route path="/profile" element={<><NavbarStu /><Profile /></>} />
-              <Route path="/studentlist" element={<><NavbarClg /><StudentList /></>} />
-              <Route path="/clubform" element={<><NavbarClg /><ClubForm /></>} />
-              <Route path="/events" element={<><NavbarClg /><Events /></>} />
-              <Route path="/clubmembers" element={<><NavbarClg /><ClubMembers /></>} />
-              <Route path="/queries" element={<><NavbarClg /><StudentQueries /></>} />
-            </>
-          ) : (
-            <>
-              <Route path="/student" element={<Navigate to="/login" />} />
-              <Route path="/studentform" element={<Navigate to="/login" />} />
-              <Route path="/clubs" element={<Navigate to="/login" />} />
-              <Route path="/getevents" element={<Navigate to="/login" />} />
-              <Route path="/suggestion" element={<Navigate to="/login" />} />
-              <Route path="/profile" element={<Navigate to="/login" />} />
-              <Route path="/studentlist" element={<Navigate to="/login" />} />
-              <Route path="/clubform" element={<Navigate to="/login" />} />
-              <Route path="/events" element={<Navigate to="/login" />} />
-              <Route path="/clubmembers" element={<Navigate to="/login" />} />
-              <Route path="/queries" element={<Navigate to="/login" />} />
-            </>
-          )}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <Footer />
-      </Router>
+        {authenticated ? (
+          <>
+            <Route path="/student" element={<><NavbarStu /><HomeStud /></>} />
+            <Route path="/studentform" element={<><NavbarStu /><StudentForm /></>} />
+            <Route path="/clubs" element={<><NavbarStu /><Clubs /></>} />
+            <Route path="/getevents" element={<><NavbarStu /><EventList /></>} />
+            <Route path="/suggestion" element={<><NavbarStu /><Suggestion /></>} />
+            <Route path="/profile" element={<><NavbarStu /><Profile /></>} />
+            <Route path="/studentlist" element={<><NavbarClg /><StudentList /></>} />
+            <Route path="/clubform" element={<><NavbarClg /><ClubForm /></>} />
+            <Route path="/events" element={<><NavbarClg /><Events /></>} />
+            <Route path="/clubmembers" element={<><NavbarClg /><ClubMembers /></>} />
+            <Route path="/queries" element={<><NavbarClg /><StudentQueries /></>} />
+          </>
+        ) : (
+          <>
+            <Route path="/student" element={<Navigate to="/login" />} />
+            <Route path="/studentform" element={<Navigate to="/login" />} />
+            <Route path="/clubs" element={<Navigate to="/login" />} />
+            <Route path="/getevents" element={<Navigate to="/login" />} />
+            <Route path="/suggestion" element={<Navigate to="/login" />} />
+            <Route path="/profile" element={<Navigate to="/login" />} />
+            <Route path="/studentlist" element={<Navigate to="/login" />} />
+            <Route path="/clubform" element={<Navigate to="/login" />} />
+            <Route path="/events" element={<Navigate to="/login" />} />
+            <Route path="/clubmembers" element={<Navigate to="/login" />} />
+            <Route path="/queries" element={<Navigate to="/login" />} />
+          </>
+        )}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+      <Footer />
     </>
   );
 }
