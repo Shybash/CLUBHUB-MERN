@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
+import { useAuth } from './Authcontext';
 import './Profile.css';
 
 const Profile = () => {
@@ -8,24 +8,30 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const { user } = useAuth(); 
     useEffect(() => {
         const fetchStudentDetails = async () => {
+            if (!user || !user._id) {
+                setError('User ID not found');
+                setLoading(false);
+                return;
+            }
+
             try {
                 const response = await axios.get(
-                    `https://clubhub-backend.vercel.app/api/student/details`,
-                    { withCredentials: true } 
+                    `https://clubhub-backend.vercel.app/api/student/${user._id}`
                 );
-                
                 setStudentDetails(response.data);
             } catch (error) {
                 console.error('Error fetching student:', error);
-                setError(error.response?.data?.message || "An error occurred while fetching student details.");
+                setError(error.message);
             } finally {
                 setLoading(false);
             }
         };
+
         fetchStudentDetails();
-    }, []);
+    }, [user]); 
 
     if (loading) {
         return <div className="loading">Loading...</div>;
@@ -36,7 +42,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="background">
+        <div className="backgroun">
             <div className="profile-container">
                 {studentDetails && (
                     <div>
