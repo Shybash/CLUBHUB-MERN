@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth } from './Authcontext'
+import { useAuth } from './Authcontexty'
 import './StudentForm.css';
 
 const StudentForm = () => {
