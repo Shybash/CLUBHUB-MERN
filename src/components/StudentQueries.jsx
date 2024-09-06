@@ -9,7 +9,10 @@ const StudentQueries = () => {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get('https://clubhub-backend.vercel.app/api/GetQuery'); // Using CORS proxy
+        const response = await axios.get(
+          'https://clubhub-backend.vercel.app/api/GetQuery',
+          { withCredentials: true } 
+        );
         setQueries(response.data);
         setLoading(false);
       } catch (error) {
@@ -23,7 +26,10 @@ const StudentQueries = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://clubhub-backend.vercel.app/api/deleteQuery/${id}`);
+      await axios.delete(
+        `https://clubhub-backend.vercel.app/api/deleteQuery/${id}`,
+        { withCredentials: true } 
+      );
       setQueries(queries.filter(query => query._id !== id));
     } catch (error) {
       console.error('Error deleting student query:', error);
@@ -32,22 +38,22 @@ const StudentQueries = () => {
 
   return (
     <div className="cont">
-    <div className="student-queries-container">
-      <h2 className="student-queries-title">Student Queries</h2>
-      {loading ? (
-        <p className="loading-message">Loading queries...</p>
-      ) : (
-        <ul className="query-list">
-          {queries.map((query, index) => (
-            <li key={index} className="query-item">
-              <p className="query-text">Query: {query.query}</p>
-              <p className="suggestion-text">Suggestion: {query.suggestion}</p>
-              <button onClick={() => handleDelete(query._id)}>Delete</button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      <div className="student-queries-container">
+        <h2 className="student-queries-title">Student Queries</h2>
+        {loading ? (
+          <p className="loading-message">Loading queries...</p>
+        ) : (
+          <ul className="query-list">
+            {queries.map((query, index) => (
+              <li key={index} className="query-item">
+                <p className="query-text">Query: {query.query}</p>
+                <p className="suggestion-text">Suggestion: {query.suggestion}</p>
+                <button onClick={() => handleDelete(query._id)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };

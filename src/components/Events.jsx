@@ -22,7 +22,9 @@ const Events = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://clubhub-backend.vercel.app/api/Events', event);
+      await axios.post('https://clubhub-backend.vercel.app/api/Events', event, {
+        withCredentials: true
+    });
       setMessage('Event added successfully');
       setEvent({
         name: '',

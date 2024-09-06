@@ -14,14 +14,7 @@ const Loginclg = () => {
     const navigate = useNavigate(); 
     const { login } = useAuth(); 
 
-    useEffect(() => {
-        const token = Cookies.get('token');
-        if (token) {
-            login(token); 
-            navigate('/StudentList');
-        }
-    }, [login, navigate]);
-
+  
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -42,14 +35,10 @@ const Loginclg = () => {
                 { withCredentials: true } 
             );
     
-            const token = Cookies.get('token');
-            console.log('Token from cookies after login:', token);
-    
-            if (token) {
-                await login(token); 
+            if (response.status === 200) {
                 navigate('/StudentList');
             } else {
-                setError("Login failed. No token received.");
+                console.log("Login failed.");
             }
         } catch (error) {
             console.error("Login error:", error);

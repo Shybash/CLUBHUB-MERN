@@ -11,8 +11,8 @@ const RegisterStudent = () => {
     confirmpassword: ''
   });
 
-  const [loading, setLoading] = useState(false); // Define loading state variable
-  const [error, setError] = useState(null); // Define error state variable
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const changeHandler = e => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -20,24 +20,36 @@ const RegisterStudent = () => {
 
   const submitHandler = e => {
     e.preventDefault();
-    setLoading(true); 
-    setError(null); 
 
-    axios.post(`https://clubhub-backend.vercel.app/api/register`, data)
-      .then(res => {
-        alert(res.data);
-        setLoading(false); 
-      })
-      .catch(error => {
-        console.error(error);
-        setLoading(false); 
+    // Basic validation
+    if (data.password !== data.confirmpassword) {
+      setError("Passwords do not match.");
+      setLoading(false);
+      return;
+    }
 
-        if (error.response && error.response.data && error.response.data.error) {
-          setError(error.response.data.error);
-        } else {
-          setError("An error occurred. Please try again later.");
-        }
-      });
+    setLoading(true);
+    setError(null);
+
+    axios.post(
+      'https://clubhub-backend.vercel.app/api/register',
+      data,
+      { withCredentials: true }
+    )
+    .then(res => {
+      alert(res.data);
+      setLoading(false);
+    })
+    .catch(error => {
+      console.error("There was an error registering:", error);
+      setLoading(false);
+
+      if (error.response && error.response.data && error.response.data.error) {
+        setError(error.response.data.error);
+      } else {
+        setError("An error occurred. Please try again later.");
+      }
+    });
   };
 
   return (
@@ -45,17 +57,52 @@ const RegisterStudent = () => {
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <h3>Register</h3>
-          {error && <p className="text-danger">{error}</p>} 
+          {error && <p className="text-danger">{error}</p>}
           <label className="form-label">Username</label>
-          <input type="text" placeholder="username" name="username" onChange={changeHandler} className="form-control" />
+          <input
+            type="text"
+            placeholder="username"
+            name="username"
+            onChange={changeHandler}
+            className="form-control"
+            value={data.username}
+          />
           <label className="form-label">Roll Number</label>
-          <input type="text" placeholder="roll number" name="rollnum" onChange={changeHandler} className="form-control" />
+          <input
+            type="text"
+            placeholder="roll number"
+            name="rollnum"
+            onChange={changeHandler}
+            className="form-control"
+            value={data.rollnum}
+          />
           <label className="form-label">Email</label>
-          <input type="email" placeholder="email" name="email" onChange={changeHandler} className="form-control" />
+          <input
+            type="email"
+            placeholder="email"
+            name="email"
+            onChange={changeHandler}
+            className="form-control"
+            value={data.email}
+          />
           <label className="form-label">Password</label>
-          <input type="password" placeholder="password" name="password" onChange={changeHandler} className="form-control" />
+          <input
+            type="password"
+            placeholder="password"
+            name="password"
+            onChange={changeHandler}
+            className="form-control"
+            value={data.password}
+          />
           <label className="form-label">Confirm Password</label>
-          <input type="password" placeholder="confirm password" name="confirmpassword" onChange={changeHandler} className="form-control" />
+          <input
+            type="password"
+            placeholder="confirm password"
+            name="confirmpassword"
+            onChange={changeHandler}
+            className="form-control"
+            value={data.confirmpassword}
+          />
           <button
             type="submit"
             className="btn btn-primary"

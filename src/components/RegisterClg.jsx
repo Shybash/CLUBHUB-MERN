@@ -22,8 +22,12 @@ const RegisterClg = () => {
         setError(null); 
 
         try {
-            const response = await axios.post(`https://clubhub-backend.vercel.app/api/RegisterClg`, data);
-            alert(response.data);
+            const response = await axios.post(
+                'https://clubhub-backend.vercel.app/api/RegisterClg',
+                data,
+                { withCredentials: true }  
+            );
+                        alert(response.data);
             setLoading(false); 
         } catch (error) {
             console.error(error);

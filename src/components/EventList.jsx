@@ -11,7 +11,9 @@ const EventList = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('https://clubhub-backend.vercel.app/api/GetEvents');
+      const response = await axios.get('https://clubhub-backend.vercel.app/api/GetEvents', {
+        withCredentials: true
+    });
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);

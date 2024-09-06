@@ -10,7 +10,10 @@ const StudentList = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get('https://clubhub-backend.vercel.app/api/StudentForm');
+        const response = await axios.get(
+          'https://clubhub-backend.vercel.app/api/StudentForm',
+          { withCredentials: true } 
+        );
         setGroupedStudents(response.data);
         setLoading(false);
       } catch (error) {
@@ -25,7 +28,10 @@ const StudentList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://clubhub-backend.vercel.app/api/deleteStudent/${id}`);
+      await axios.delete(
+        `https://clubhub-backend.vercel.app/api/deleteStudent/${id}`,
+        { withCredentials: true } 
+      );
       setGroupedStudents(prevStudents => {
         const updatedStudents = { ...prevStudents };
         Object.keys(updatedStudents).forEach(club => {
@@ -41,22 +47,23 @@ const StudentList = () => {
 
   const handleAccept = async (id) => {
     try {
-        await axios.post(`https://clubhub-backend.vercel.app/api/AcceptStudent/${id}`);
-
-                setGroupedStudents(prevStudents => {
-            const updatedStudents = { ...prevStudents };
-            Object.keys(updatedStudents).forEach(club => {
-                updatedStudents[club] = updatedStudents[club].filter(student => student._id !== id);
-            });
-            return updatedStudents;
+      await axios.post(
+        `https://clubhub-backend.vercel.app/api/AcceptStudent/${id}`,
+        {},
+        { withCredentials: true } 
+      );
+      setGroupedStudents(prevStudents => {
+        const updatedStudents = { ...prevStudents };
+        Object.keys(updatedStudents).forEach(club => {
+          updatedStudents[club] = updatedStudents[club].filter(student => student._id !== id);
         });
+        return updatedStudents;
+      });
     } catch (error) {
-        console.error('Error accepting student:', error);
-        setError('Failed to accept student. Please try again later.');
+      console.error('Error accepting student:', error);
+      setError('Failed to accept student. Please try again later.');
     }
-};
-
-
+  };
 
   return (
     <div className="studentlis">
@@ -86,7 +93,7 @@ const StudentList = () => {
                         <td>{student.rollNum}</td>
                         <td>{student.name}</td>
                         <td>{student.contactNumber}</td>
-                        <td className>
+                        <td className="actions">
                           <button className="butt" onClick={() => handleDelete(student._id)}>Delete</button>
                           <button className="butt" onClick={() => handleAccept(student._id)}>Accept</button>
                         </td>
@@ -99,7 +106,7 @@ const StudentList = () => {
           ))}
         </div>
       )}
-        <div className="description-box">
+      <div className="description-box">
         <p className="description">
           Welcome to the Student List page! Here, you can view a list of students grouped by their respective clubs. Each club has its own table displaying the roll number, name, and contact number of the students belonging to that club. You can easily delete a student by clicking the "Delete" button next to their name. If you encounter any issues while viewing or deleting students, an error message will be displayed to inform you. This page provides a convenient way to manage student data, facilitating organization and administration within the educational institution or club. Feel free to explore and manage the student list as needed!
         </p>

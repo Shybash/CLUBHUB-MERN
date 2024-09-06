@@ -10,7 +10,11 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      await axios.post('https://clubhub-backend.vercel.app/api/StudentQuery', { query, suggestion });
+      await axios.post(
+        'https://clubhub-backend.vercel.app/api/StudentQuery',
+        { query, suggestion },
+        { withCredentials: true }
+    );
       alert('Suggestion submitted successfully!');
       setQuery('');
       setSuggestion('');

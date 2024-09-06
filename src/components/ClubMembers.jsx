@@ -30,8 +30,11 @@ const ClubMembers = () => {
 
   const handleDeleteMember = async (clubName, memberId) => {
     try {
-      await axios.delete(`https://clubhub-backend.vercel.app/api/deleteClubMember/${clubName}/${memberId}`);
-      
+      await axios.delete(
+        `https://clubhub-backend.vercel.app/api/deleteClubMember/${clubName}/${memberId}`,
+        { withCredentials: true }
+    );
+          
       fetchClubMembers();
     } catch (error) {
       console.error('Error deleting club member:', error);
@@ -49,7 +52,7 @@ const ClubMembers = () => {
         <div className="club-members">
           <h2 className="club-members-title">Club Members</h2>
           {Object.keys(clubMembers)
-            .sort() // Sorting  the club names alphabetically
+            .sort() 
             .map((club, index) => (
               <div key={index}>
                 <h3 className="club-name">{club} Club</h3>
