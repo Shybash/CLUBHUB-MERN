@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth } from './Authcontext';
+import { useAuth } from './Authcontext'
 import './StudentForm.css';
 
 const StudentForm = () => {
+  const { user } = useAuth();
   const [name, setName] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [club, setClub] = useState('');
@@ -13,42 +14,50 @@ const StudentForm = () => {
   const [studentDetails, setStudentDetails] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const { user } = useAuth(); 
-
   useEffect(() => {
-    const fetchClubOptions = async () => {
-      try {
-        const response = await axios.get('https://clubhub-backend.vercel.app/api/GetClubs', { withCredentials: true });
-        if (response.data && Array.isArray(response.data)) {
-          setClubOptions(response.data.map(club => club.name));
-        } else {
-          setError('Invalid data format received from the server.');
-          console.error('Invalid data format received from the server:', response.data);
-        }
-      } catch (error) {
-        setError('An error occurred while fetching club options. Please try again.');
-        console.error('Error fetching club options:', error);
-      }
-    };
-
-    const fetchStudentDetails = async () => {
-      try {
-        if (!user || !user._id) {
-          throw new Error('User ID not found');
-        }
-        const response = await axios.get(`https://clubhub-backend.vercel.app/api/student/${user._id}`, { withCredentials: true });
-        setStudentDetails(response.data);
-      } catch (error) {
-        console.error('Error fetching student details:', error);
-        setError('An error occurred while fetching student details. Please try again.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchClubOptions();
     fetchStudentDetails();
   }, [user]);
+
+  const fetchClubOptions = async () => {
+    try {
+      const response = await axios.get(
+        'https://clubhub-backend.vercel.app/api/GetClubs',
+        { withCredentials: true } 
+      );
+      if (response.data && Array.isArray(response.data)) {
+        setClubOptions(response.data.map(club => club.name));
+      } else {
+        setError('Invalid data format received from the server.');
+        console.error('Invalid data format received from the server:', response.data);
+      }
+    } catch (error) {
+      setError('An error occurred while fetching club options. Please try again.');
+      console.error('Error fetching club options:', error);
+    }
+  };
+
+  const fetchStudentDetails = async () => {
+    try {
+      if (!user || !user.id) {
+        throw new Error("User ID not found");
+      }
+
+      console.log('Fetching details for user ID:', user.id); // Debug log
+
+      const response = await axios.get(
+        `https://clubhub-backend.vercel.app/api/student/${user.id}`,
+        { withCredentials: true } 
+      );
+
+      setStudentDetails(response.data);
+    } catch (error) {
+      console.error("Error fetching student details:", error);
+      setError('An error occurred while fetching student details. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -62,7 +71,7 @@ const StudentForm = () => {
           contactNumber,
           club
         },
-        { withCredentials: true }
+        { withCredentials: true } 
       );
       console.log(response.data);
       setName('');
