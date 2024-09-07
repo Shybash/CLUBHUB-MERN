@@ -19,8 +19,11 @@ const Profile = () => {
 
             try {
                 const response = await axios.get(
-                    `https://clubhub-backend.vercel.app/api/student/${user._id}`
-                );
+                    `https://clubhub-backend.vercel.app/api/student/${user._id}`,
+                    { 
+                        withCredentials: true 
+                    }
+                );                
                 setStudentDetails(response.data);
             } catch (error) {
                 console.error('Error fetching student:', error);
