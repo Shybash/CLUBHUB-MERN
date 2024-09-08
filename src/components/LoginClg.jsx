@@ -35,7 +35,7 @@ const Loginclg = () => {
                 { withCredentials: true } 
             );
     
-            if (response.status === 200) {
+            if (response.status === 200 && response.data.user) {
                 login(response.data.user);
                 navigate('/StudentList');
             } else {
