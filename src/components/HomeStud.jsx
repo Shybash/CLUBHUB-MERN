@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from './Authcontext';
 import './HomeStud.css';
 
 const HomeStud = () => {
   const [clubs, setClubs] = useState([]);
   const navigate = useNavigate();
-
+  const { authenticated} = useAuth(); 
   useEffect(() => {
     const fetchClubs = async () => {
       try {
@@ -23,7 +24,7 @@ const HomeStud = () => {
     };
 
     fetchClubs();
-  }, []);
+  }, [authenticated]);
 
   const handleJoinClub = (e) => {
     e.stopPropagation();

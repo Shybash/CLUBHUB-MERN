@@ -36,6 +36,7 @@ const Loginclg = () => {
             );
     
             if (response.status === 200) {
+                login(response.data.user);
                 navigate('/StudentList');
             } else {
                 console.log("Login failed.");

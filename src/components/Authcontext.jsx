@@ -17,6 +17,10 @@ export const AuthProvider = ({ children }) => {
                 const response = await axios.get('https://clubhub-backend.vercel.app/api/is-logged-in', {
                     withCredentials: true,
                 });
+                if (response.data.loggedIn) {
+                    setUser(response.data.user); 
+                }
+    
                 
             } catch (error) {
                 console.log('Not authenticated', error);
