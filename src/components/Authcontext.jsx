@@ -20,12 +20,10 @@ export const AuthProvider = ({ children }) => {
                 if (response.data.loggedIn) {
                     setUser(response.data.user); 
                 }
-    
-                
             } catch (error) {
                 console.log('Not authenticated', error);
             } finally {
-                setLoading(false);
+                setLoading(false);  
             }
         };
 
@@ -47,7 +45,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ user, login, logout, loading, authenticated }}>
-            {children}
+            {!loading && children}
         </AuthContext.Provider>
     );
 };
