@@ -9,8 +9,10 @@ const ClubMembers = () => {
 
   const fetchClubMembers = async () => {
     try {
-      const response = await axios.get('https://clubhub-backend.vercel.app/api/GetClubMembers');
-      if (response.data && typeof response.data === 'object') {
+      const response = await axios.get('https://clubhub-backend.vercel.app/api/GetClubMembers', {
+        withCredentials: true
+    });
+          if (response.data && typeof response.data === 'object') {
         setClubMembers(response.data);
         setLoading(false);
       } else {

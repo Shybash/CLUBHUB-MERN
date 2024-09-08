@@ -27,7 +27,7 @@ const RegisterClg = () => {
                 data,
                 { withCredentials: true }  
             );
-                        alert(response.data);
+            alert(response.data);
             setLoading(false); 
         } catch (error) {
             console.error(error);
