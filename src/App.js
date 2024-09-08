@@ -23,10 +23,12 @@ import EventList from './components/EventList';
 import Events from './components/Events';
 
 function App() {
+
   const { authenticated } = useAuth();
 
   return (
     <>
+    
       <Routes>
         <Route path="/" element={<><Navbar /><Home /></>} />
         <Route path="/login" element={<><Navbar /><LoginTabs /></>} />
