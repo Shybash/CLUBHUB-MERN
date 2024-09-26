@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
                 const response = await axios.get('https://clubhub-backend.vercel.app/api/is-logged-in', {
                     withCredentials: true,
                 });
-
+                console.log('API Response:', response.data); 
                 if (response.data.loggedIn) {
                     setUser(response.data.user);
                 } else {
@@ -31,15 +31,7 @@ export const AuthProvider = ({ children }) => {
             }
         };
 
- 
-        const params = new URLSearchParams(window.location.search);
-        const fromGoogle = params.get('google') === 'true';
-
-        if (fromGoogle) {
-            checkAuth();
-        } else {
-            setLoading(false);
-        }
+        checkAuth();
     }, []);
 
     const login = (userData) => {
@@ -53,10 +45,10 @@ export const AuthProvider = ({ children }) => {
         navigate('/login');
     };
 
-    const authenticated = !!user;
+    const authenticated = !!user; 
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>; 
     }
 
     return (
