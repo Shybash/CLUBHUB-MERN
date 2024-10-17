@@ -17,17 +17,13 @@ export const AuthProvider = ({ children }) => {
                 const response = await axios.get('https://clubhub-backend.vercel.app/api/is-logged-in', {
                     withCredentials: true,
                 });
-                console.log('API Response:', response.data); 
                 if (response.data.loggedIn) {
-                    setUser(response.data.user);
-                } else {
-                    setUser(null);
+                    setUser(response.data.user); 
                 }
             } catch (error) {
                 console.log('Not authenticated', error);
-                setUser(null);
             } finally {
-                setLoading(false);
+                setLoading(false);  
             }
         };
 
@@ -47,13 +43,9 @@ export const AuthProvider = ({ children }) => {
 
     const authenticated = !!user; 
 
-    if (loading) {
-        return <div>Loading...</div>; 
-    }
-
     return (
         <AuthContext.Provider value={{ user, login, logout, loading, authenticated }}>
-            {children}
+            {!loading && children}
         </AuthContext.Provider>
     );
 };

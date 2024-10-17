@@ -35,14 +35,13 @@ const LoginStudent = () => {
             const response = await axios.post(
                 'https://clubhub-backend.vercel.app/api/login',
                 { email: data.email, password: data.password },
-                { withCredentials: true }
+                { withCredentials: true } // Ensures cookies are sent with the request
             );
 
-            if (response.status === 200 && response.data.user) {
-                login(response.data.user);  
-                navigate('/student');  
+            if (response.status === 200) {
+                navigate('/student');
             } else {
-                setError("Login failed");
+                console.log("Login failed.");
             }
         } catch (error) {
             console.error("Login error:", error);
