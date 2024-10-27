@@ -38,7 +38,8 @@ const LoginStudent = () => {
                 { withCredentials: true } // Ensures cookies are sent with the request
             );
 
-            if (response.status === 200) {
+            if (response.status === 200 && response.data.user) {
+                login(response.data.user);
                 navigate('/student');
             } else {
                 console.log("Login failed.");
