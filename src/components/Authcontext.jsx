@@ -98,6 +98,7 @@ export const AuthProvider = ({ children }) => {
                 console.log(location.pathname)
                 const isRedirect = location.pathname ==="/auth/google";
                 if (isRedirect) {
+                    console.log("returned");
                     return; // Skip `is-logged-in` check
                 }
                 const response = await axios.get('https://clubhub-backend.vercel.app/api/is-logged-in', {
