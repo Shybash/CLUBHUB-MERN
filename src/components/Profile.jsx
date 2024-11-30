@@ -9,32 +9,35 @@ const Profile = () => {
     const [error, setError] = useState(null);
 
     const { user } = useAuth(); 
+    console.log("profile page user",user);
+    const fetchStudentDetails = async () => {
+        if (!user || !user.userId) {
+            console.log(" no user found");
+            setError('User ID not found');
+            setLoading(false);
+            return;
+        }
+        console.log("user found");  
+
+        try {
+            const response = await axios.get(
+                `https://clubhub-backend.vercel.app/api/student/${user.userId}`,
+                { 
+                    withCredentials: true 
+                }
+            );                
+            setStudentDetails(response.data);
+        } catch (error) {
+            console.error('Error fetching student:', error);
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchStudentDetails = async () => {
-            if (!user || !user._id) {
-                setError('User ID not found');
-                setLoading(false);
-                return;
-            }
-
-            try {
-                const response = await axios.get(
-                    `https://clubhub-backend.vercel.app/api/student/${user._id}`,
-                    { 
-                        withCredentials: true 
-                    }
-                );                
-                setStudentDetails(response.data);
-            } catch (error) {
-                console.error('Error fetching student:', error);
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchStudentDetails();
-    }, [user]); 
+    },[]); 
 
     if (loading) {
         return <div className="loading">Loading...</div>;

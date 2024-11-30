@@ -40,7 +40,7 @@ const LoginStudent = () => {
 
             if (response.status === 200 && response.data.user) {
                 login(response.data.user);
-                navigate('/student');
+                // navigate('/student');
             } else {
                 console.log("Login failed.");
             }

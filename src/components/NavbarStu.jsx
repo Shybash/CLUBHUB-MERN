@@ -72,7 +72,7 @@ function NavbarStu() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Profile">
+                <Link className="nav-link" to="/profile">
                   Profile
                 </Link>
               </li>
