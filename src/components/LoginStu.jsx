@@ -15,7 +15,7 @@ const LoginStudent = () => {
     const { login } = useAuth(); 
 
     const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:8000/auth/google';
+        window.location.href = 'https://clubhub-backend.vercel.app/auth/google';
     };
 
     const toggleShowPassword = () => {
