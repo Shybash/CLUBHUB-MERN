@@ -35,10 +35,10 @@ function App() {
         <Route path="/register" element={<><Navbar /><RegisterTabs /></>} />
         <Route path="/about" element={<><Navbar /><About /></>} />
         <Route path="/faq" element={<><Navbar /><Faq /></>} />
-
+        <Route path="/student" element={<><NavbarStu /><HomeStud /></>} />
         {authenticated ? (
           <>
-            <Route path="/student" element={<><NavbarStu /><HomeStud /></>} />
+           
             <Route path="/studentform" element={<><NavbarStu /><StudentForm /></>} />
             <Route path="/clubs" element={<><NavbarStu /><Clubs /></>} />
             <Route path="/getevents" element={<><NavbarStu /><EventList /></>} />

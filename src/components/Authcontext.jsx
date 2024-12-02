@@ -96,10 +96,9 @@ export const AuthProvider = ({ children }) => {
             try {
                 // Avoid `is-logged-in` API call during Google login redirect
                 console.log(location.pathname)
-                const isRedirect = location.pathname ==="/auth/google";
-                if (isRedirect) {
-                    console.log("returned");
-                    return; // Skip `is-logged-in` check
+                if (location.pathname === "/auth/google/callback") {
+                    console.log("OAuth callback, skipping authentication check.");
+                    return; // Skip the auth check during Google OAuth redirect
                 }
                 const response = await axios.get('https://clubhub-backend.vercel.app/api/is-logged-in', {
                     withCredentials: true,
