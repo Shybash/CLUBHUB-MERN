@@ -34,12 +34,12 @@ export const AuthProvider = ({ children }) => {
                     setAuthenticated(true);
                     console.log("user in context",user)
                 }
-                // else if(response.data.loggedIn==false){
-                //     console.log("logged out ");
-                //     navigate('/login');
-                //     setUser(null);
-                //     setAuthenticated(false);
-                // }
+                else if(response.data.loggedIn==false){
+                    console.log("logged out ");
+                    navigate('/login');
+                    setUser(null);
+                    setAuthenticated(false);
+                }
             } catch (error) {
                 console.log("from the frontend , user is not auth")
                 console.log('Not authenticated', error);
