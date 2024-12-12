@@ -18,7 +18,7 @@ const LoginStudent = () => {
         try {
             window.location.href = 'https://clubhub-backend.vercel.app/auth/google';
         } catch (error) {
-            console.error("Google login error:", error);
+            console.error("Google login err:", error);
         }
     };
     
