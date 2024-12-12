@@ -17,7 +17,8 @@ const Profile = () => {
             setLoading(false);
             return;
         }
-        console.log("user found");  
+        console.log("user found",user);
+
 
         try {
             const response = await axios.get(

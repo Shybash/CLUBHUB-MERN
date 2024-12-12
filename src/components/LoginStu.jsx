@@ -13,11 +13,15 @@ const LoginStudent = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate(); 
     const { login } = useAuth(); 
-
-    const handleGoogleLogin = () => {
-        window.location.href = 'https://clubhub-backend.vercel.app/auth/google';
+   
+    const handleGoogleLogin = async () => {
+        try {
+            window.location.href = 'http://localhost:8000/auth/google';
+        } catch (error) {
+            console.error("Google login error:", error);
+        }
     };
-
+    
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -35,12 +39,12 @@ const LoginStudent = () => {
             const response = await axios.post(
                 'https://clubhub-backend.vercel.app/api/login',
                 { email: data.email, password: data.password },
-                { withCredentials: true } // Ensures cookies are sent with the request
+                { withCredentials: true } 
             );
 
             if (response.status === 200 && response.data.user) {
                 login(response.data.user);
-                // navigate('/student');
+                navigate('/student');
             } else {
                 console.log("Login failed.");
             }
