@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
         const checkAuth = async () => {
             try {
                 console.log("calling islogged in from frontend");
-                const response = await axios.get('http://localhost:8000/api/is-logged-in', {
+                const response = await axios.get('https://clubhub-backend.vercel.app/api/is-logged-in', {
                     withCredentials: true,
                 });
                 console.log("response is",response);
